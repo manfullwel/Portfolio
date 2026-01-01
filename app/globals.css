@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: 2, 6, 23; /* Slate-950 */
-  --foreground: 226, 232, 240; /* Slate-200 */
-  --accent: 16, 185, 129; /* Emerald-500 */
-  --accent-muted: 6, 78, 59; /* Emerald-900/50 */
+  --background: 2, 6, 23;
+  /* Slate-950 */
+  --foreground: 226, 232, 240;
+  /* Slate-200 */
+  --accent: 16, 185, 129;
+  /* Emerald-500 */
+  --accent-muted: 6, 78, 59;
+  /* Emerald-900/50 */
 }
 
 @layer base {
@@ -18,55 +22,59 @@
 
 /* Glassmorphism 3.0 - Professional & Deep */
 .glass-panel {
-  @apply backdrop-blur-md bg-slate-900/50 border border-slate-800 shadow-2xl;
+  @apply backdrop-blur-xl bg-slate-900/60 border border-slate-800/80 shadow-[0_20px_50px_rgba(0, 0, 0, 0.5)];
 }
 
 .glass-card {
-  @apply backdrop-blur-sm bg-slate-900/30 border border-slate-800/50 hover:border-emerald-500/30 transition-all duration-300;
+  @apply backdrop-blur-md bg-white/[0.03] border border-white/[0.05] hover:border-emerald-500/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(16, 185, 129, 0.1)];
+}
+
+/* iOS-like Smooth Depth */
+.ios-shadow {
+  shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 /* Typography Utils */
 .heading-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-100 via-slate-300 to-slate-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-slate-200 to-slate-500 font-bold tracking-tight;
+}
+
+.text-soft {
+  @apply text-slate-400 font-light leading-relaxed;
 }
 
 .accent-glow {
-  @apply shadow-[0_0_20px_rgba(16,185,129,0.15)];
+  @apply shadow-[0_0_30px_rgba(16, 185, 129, 0.2)];
 }
 
 /* Interactive Elements */
 .nav-link {
-  @apply relative text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm font-medium;
+  @apply relative text-slate-400 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide;
 }
 
 .nav-link::after {
   content: '';
-  @apply absolute -bottom-1 left-0 w-0 h-px bg-emerald-500 transition-all duration-300;
+  @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 rounded-full;
 }
 
 .nav-link:hover::after {
   @apply w-full;
 }
 
-/* Animations */
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-950;
+  @apply bg-transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-800 rounded-full border-2 border-slate-950 hover:bg-slate-700 transition-colors;
+  @apply bg-slate-800/50 rounded-full hover:bg-emerald-500/30 transition-colors;
+}
+
+/* Sections */
+section {
+  @apply py-24 px-6;
 }

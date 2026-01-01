@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     Shield, Fingerprint, Cpu, Search, Globe, Mail, FileText,
     Award, BookOpen, Smartphone, AlertTriangle, ChevronRight,
-    Github, Linkedin, ExternalLink, Menu, X
+    Github, Linkedin, ExternalLink, Menu, X, Terminal, ArrowRight
 } from 'lucide-react';
 
 // --- Components ---
@@ -329,6 +329,137 @@ const EducationAndLanguages = () => (
     </section>
 );
 
+// --- Dynamic Sections ---
+
+const BlogSection = () => {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/blog').then(res => res.json()).then(data => setPosts(data));
+    }, []);
+
+    return (
+        <section id="blog" className="py-24">
+            <div className="max-w-6xl mx-auto px-4">
+                <div className="mb-12">
+                    <h2 className="text-3xl font-bold heading-gradient mb-4">Insights Forenses</h2>
+                    <p className="text-soft max-w-2xl text-slate-400">Artigos técnicos e análises sobre o futuro da prova pericial e inteligência artificial.</p>
+                </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                    {posts.map(post => (
+                        <motion.div
+                            key={post.id}
+                            whileHover={{ y: -5 }}
+                            className="glass-card p-8 rounded-3xl group cursor-pointer"
+                        >
+                            <span className="text-xs font-mono text-emerald-500 mb-4 block tracking-widest uppercase">{post.date}</span>
+                            <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-emerald-400 transition-colors">{post.title}</h3>
+                            <p className="text-slate-400 text-sm mb-6">{post.excerpt}</p>
+                            <div className="flex items-center text-emerald-500 text-sm font-medium">
+                                Ler artigo completo <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const LegalIntegration = () => {
+    const [legalData, setLegalData] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/legal').then(res => res.json()).then(data => setLegalData(data));
+    }, []);
+
+    return (
+        <section className="py-24 bg-slate-900/30">
+            <div className="max-w-6xl mx-auto px-4">
+                <div className="glass-panel p-10 rounded-[2.5rem] border-emerald-500/10 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-8 opacity-5">
+                        <Terminal size={120} />
+                    </div>
+                    <div className="relative z-10">
+                        <h2 className="text-2xl font-bold text-white mb-8 flex items-center">
+                            <Search className="mr-3 text-emerald-500" /> Jurisprudência de Interesse
+                        </h2>
+                        <div className="space-y-6">
+                            {legalData.map((item, i) => (
+                                <div key={i} className="border-l-2 border-emerald-500/30 pl-6 py-2">
+                                    <span className="text-[10px] font-mono text-emerald-500/60 uppercase tracking-tighter mb-1 block">{item.type}</span>
+                                    <h4 className="text-slate-200 font-medium mb-1">{item.caseTitle}</h4>
+                                    <p className="text-xs text-slate-400">{item.summary}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const ContactSection = () => {
+    const [status, setStatus] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('sending');
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            if (res.ok) setStatus('success');
+            else setStatus('error');
+        } catch (e) {
+            setStatus('error');
+        }
+    };
+
+    return (
+        <section id="contato" className="py-24">
+            <div className="max-w-4xl mx-auto px-4 text-center">
+                <h2 className="text-4xl font-bold heading-gradient mb-6">Solicitar Perícia</h2>
+                <p className="text-slate-400 mb-12">Atendimento especializado para tribunais, escritórios de advocacia e empresas.</p>
+
+                <form onSubmit={handleSubmit} className="glass-panel p-8 md:p-12 rounded-[3rem] text-left">
+                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label className="block text-xs font-mono text-slate-500 uppercase mb-2 ml-4">Nome Completo</label>
+                            <input name="name" required className="w-full bg-slate-950/50 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:border-emerald-500/50 focus:outline-none transition-all" />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-mono text-slate-500 uppercase mb-2 ml-4">E-mail Profissional</label>
+                            <input name="email" type="email" required className="w-full bg-slate-950/50 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:border-emerald-500/50 focus:outline-none transition-all" />
+                        </div>
+                    </div>
+                    <div className="mb-8">
+                        <label className="block text-xs font-mono text-slate-500 uppercase mb-2 ml-4">Mensagem / Resumo do Caso</label>
+                        <textarea name="message" rows="4" required className="w-full bg-slate-950/50 border border-slate-800 rounded-2xl px-6 py-4 text-white focus:border-emerald-500/50 focus:outline-none transition-all resize-none"></textarea>
+                    </div>
+                    <button
+                        type="submit"
+                        disabled={status === 'sending'}
+                        className="w-full glass-card py-5 rounded-2xl text-emerald-400 font-bold tracking-widest uppercase hover:bg-emerald-500 hover:text-white transition-all duration-500 group"
+                    >
+                        {status === 'sending' ? 'Enviando...' : status === 'success' ? 'Enviado com Sucesso!' : (
+                            <span className="flex items-center justify-center">
+                                Enviar Solicitação <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                            </span>
+                        )}
+                    </button>
+                </form>
+            </div>
+        </section>
+    );
+};
+
 const Footer = () => (
     <footer id="contact" className="py-12 border-t border-slate-900">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
@@ -350,15 +481,14 @@ const Footer = () => (
     </footer>
 );
 
-export default function Home() {
-    return (
-        <main className="bg-slate-950 min-h-screen">
-            <Navbar />
-            <Hero />
-            <Expertise />
-            <Experience />
-            <EducationAndLanguages />
-            <Footer />
-        </main>
-    );
-}
+<main className="bg-slate-950 min-h-screen">
+    <Navbar />
+    <Hero />
+    <Expertise />
+    <Experience />
+    <BlogSection />
+    <LegalIntegration />
+    <EducationAndLanguages />
+    <ContactSection />
+    <Footer />
+</main>
