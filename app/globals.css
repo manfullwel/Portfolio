@@ -4,66 +4,65 @@
 
 :root {
   --background: 2, 6, 23;
-  /* Slate-950 */
-  --foreground: 226, 232, 240;
-  /* Slate-200 */
+  --foreground: 248, 250, 252;
+  /* Slate-50 for better contrast */
   --accent: 16, 185, 129;
-  /* Emerald-500 */
-  --accent-muted: 6, 78, 59;
-  /* Emerald-900/50 */
+  --accent-glow: rgba(16, 185, 129, 0.4);
 }
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-200 antialiased selection:bg-emerald-500/30;
+    @apply bg-slate-950 text-slate-50 antialiased selection:bg-emerald-500/30;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background: radial-gradient(circle at 50% 0%, #050b24 0%, #020617 100%);
   }
 }
 
-/* Glassmorphism 3.0 - Professional & Deep */
+/* --- Premium Layout & Depth --- */
+
 .glass-panel {
-  @apply backdrop-blur-xl bg-slate-900/60 border border-slate-800/80 shadow-[0_20px_50px_rgba(0, 0, 0, 0.5)];
+  @apply backdrop-blur-2xl bg-slate-900/60 border border-white/[0.08] shadow-ios-panel;
 }
 
 .glass-card {
-  @apply backdrop-blur-md bg-white/[0.03] border border-white/[0.05] hover:border-emerald-500/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(16, 185, 129, 0.1)];
+  @apply backdrop-blur-xl bg-white/[0.03] border border-white/[0.06] rounded-[2.5rem] transition-all duration-700;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
 }
 
-/* iOS-like Smooth Depth */
-.ios-shadow {
-  shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+.glass-card:hover {
+  @apply border-emerald-500/40 -translate-y-2 shadow-ios-card;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-/* Typography Utils */
-.heading-gradient {
+/* iOS-Style Icon Container */
+.icon-app {
+  @apply w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 relative overflow-hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.icon-app:hover {
+  @apply scale-110 rotate-3;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);
+}
+
+/* Typography Mastery */
+.heading-premium {
   @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-slate-200 to-slate-500 font-bold tracking-tight;
 }
 
-.text-soft {
-  @apply text-slate-400 font-light leading-relaxed;
+.text-caption {
+  @apply text-slate-400 font-mono text-[10px] uppercase tracking-[0.2em] mb-2 block;
 }
 
-.accent-glow {
-  @apply shadow-[0_0_30px_rgba(16, 185, 129, 0.2)];
+/* Seamless Animations */
+.stagger-in>* {
+  @apply opacity-0;
 }
 
-/* Interactive Elements */
-.nav-link {
-  @apply relative text-slate-400 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide;
-}
-
-.nav-link::after {
-  content: '';
-  @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 rounded-full;
-}
-
-.nav-link:hover::after {
-  @apply w-full;
-}
-
-/* Custom Scrollbar */
+/* Custom Scrollbar - Elegant & Thin */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -71,10 +70,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-800/50 rounded-full hover:bg-emerald-500/30 transition-colors;
+  @apply bg-slate-800/80 rounded-full hover:bg-emerald-500/40 transition-colors;
 }
 
 /* Sections */
 section {
-  @apply py-24 px-6;
+  @apply py-32 px-6;
 }

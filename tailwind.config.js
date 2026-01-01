@@ -21,6 +21,10 @@ module.exports = {
                     900: '#6c3c2b',
                 },
             },
+            boxShadow: {
+                'ios-panel': '0 32px 64px -16px rgba(0, 0, 0, 0.6)',
+                'ios-card': '0 20px 40px -15px rgba(0, 0, 0, 0.5)',
+            },
             animation: {
                 'tornado-spin': 'tornado-spin 3s ease-in-out forwards',
                 'float': 'float 15s linear infinite',
