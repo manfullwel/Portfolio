@@ -1,57 +1,33 @@
-import { Roboto, Roboto_Mono } from "next/font/google";
+import { Merriweather, Inter } from "next/font/google";
 import "./globals.css";
 
-const roboto = Roboto({
+const merriweather = Merriweather({
     subsets: ["latin"],
-    weight: ["300", "400", "500", "700", "900"],
-    variable: "--font-roboto",
+    weight: ["300", "400", "700", "900"],
+    variable: "--font-serif",
 });
 
-const robotoMono = Roboto_Mono({
+const inter = Inter({
     subsets: ["latin"],
-    variable: "--font-roboto-mono",
+    variable: "--font-sans",
 });
 
 export const metadata = {
-    title: 'Perito Judicial | Computação Forense & IA | ISP Forense',
-    description: 'Especialista em Perícia Computacional, Mobile Forensics e Auditoria de IA (Deepfakes). 10+ anos de experiência em segurança digital.',
-    keywords: ['perito judicial', 'computação forense', 'deepfakes', 'segurança da informação', 'isp forense', 'mobile forensics'],
-    authors: [{ name: 'ISP Forense' }],
+    title: 'Igor J. S. Penha | Perito Judicial em Computação Forense',
+    description: 'Laudos periciais, auditoria de IA e perícia mobile com rigor jurídico e soberania técnica.',
     manifest: '/manifest.json',
-    appleWebApp: {
-        capable: true,
-        statusBarStyle: 'default',
-        title: 'ISP Forense',
-    },
-    icons: {
-        apple: '/apple-touch-icon.png',
-    },
-    openGraph: {
-        title: 'Perito Judicial | Computação Forense & IA',
-        description: 'Soluções avançadas em prova digital e perícia cibernética.',
-        url: 'https://portfolio-ispforense.vercel.app',
-        siteName: 'ISP Forense',
-        locale: 'pt_BR',
-        type: 'website',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Perito Judicial | Computação Forense',
-        description: 'Especialista em prova digital e auditoria de IA.',
-    }
 };
 
 export const viewport = {
-    themeColor: '#007BFF',
+    themeColor: '#1E293B',
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 5,
 };
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="pt-BR">
-            <body className={`${roboto.variable} ${robotoMono.variable} font-sans`}>
+        <html lang="pt-BR" className={`${merriweather.variable} ${inter.variable}`}>
+            <body className="font-sans antialiased text-slate-900 bg-slate-50">
                 {children}
             </body>
         </html>

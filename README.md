@@ -1,115 +1,58 @@
-# The Gem & The Anchor - Next.js
+# ISP Forense - Perito em Computação Forense
 
-A romantic, interactive landing page celebrating Patricia and Igor's journey.
+Portfólio Profissional de **Igor de Jesus Soares Penha**, Perito Judicial e Especialista em Computação Forense.
 
-## 🚀 Quick Start
+## 🏛️ Sobre o Projeto
 
-### Prerequisites
-- Node.js 18+ installed
-- MongoDB database (local or cloud)
+Este repositório contém o código-fonte da plataforma **ISP Forense**, desenvolvida com foco em **Legal Design** para atender magistrados, advogados e peritos extrajudiciais. A aplicação segue padrões rigorosos de acessibilidade e legibilidade judicial.
 
-### Installation
+## 🚀 Tecnologias Utilizadas
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+- **Framework**: Next.js 14 (App Router)
+- **Design System**: Tailwind CSS (Institutional Legal Theme)
+- **Tipografia**: Merriweather (Serif) & Inter (Sans-Serif)
+- **Ícones**: Lucide React
+- **PWA**: Configurado para instalação nativa em dispositivos móveis
+- **Animações**: Framer Motion (Transições Sóbrias)
 
-2. **Configure environment variables:**
-   
-   Edit `.env.local` and add your MongoDB connection string:
-   ```
-   MONGODB_URI=your_mongodb_connection_string_here
-   ```
+## ⚖️ Diferenciais Técnicos
 
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+- **Cadeia de Custódia**: Desenvolvimento orientado pela norma **ISO 27037**.
+- **Hardware Sovereignty**: Foco em perícia mobile e extração física de dados (Digital Forensics).
+- **IA & Machine Learning**: Especialização técnica na detecção de **Deepfakes** e fraudes audiovisuais.
+- **Multilinguismo**: Suporte técnico para análises em Inglês, Espanhol e Russo.
 
-4. **Open in browser:**
-   
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
 ```
 lovely/
 ├── app/
-│   ├── api/
-│   │   └── plans/
-│   │       └── route.js       # API endpoints
-│   ├── globals.css            # Global styles
-│   ├── layout.js              # Root layout
-│   └── page.js                # Main page component
-├── lib/
-│   └── mongodb.js             # MongoDB connection
-├── models/
-│   └── Plan.js                # Mongoose schema
-├── .env.local                 # Environment variables
-├── next.config.js             # Next.js config
-├── tailwind.config.js         # Tailwind config
-└── package.json               # Dependencies
+│   ├── layout.js              # Configuração de Fontes e Metadados Legais
+│   ├── page.js                # Componentes Institucionais
+│   └── globals.css            # Design System (Paper-White / Navy-Institutional)
+├── public/
+│   ├── images/                # Ativos Profissionais
+│   └── manifest.json          # Configuração PWA
+└── tailwind.config.js         # Tokens de Design Customizados
 ```
 
-## ✨ Features
+## 🛠️ Configuração Local
 
-- **Tornado → Heart Animation**: Framer Motion transformation on load
-- **35 Days Timeline**: Auto-progressing timeline with milestones
-- **Interactive Cusco Section**: Romantic visualization of future home
-- **"Carne e Osso" Test**: Clickable elements proving real-world connection
-- **Thoughts Form**: MongoDB-connected message submission
-- **Mouse Tracking**: Particle system following cursor
-- **Confetti Effects**: Celebration on form submission
-- **Responsive Design**: Mobile-first approach
+1.  **Instalação:**
+    ```bash
+    npm install
+    ```
 
-## 🎨 Design Philosophy
+2.  **Desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
 
-**Strength meets Elegance** - Inspired by Patricia's resilience and the beauty of Cusco:
-- **Glassmorphism**: Modern transparency effects
-- **Earth Tones**: Amber, terracotta, sand (Cusco)
-- **Neon Accents**: Pink, purple (modernity & romance)
-- **Solid Foundations**: Clear hierarchy for trust
+## 🚢 Deploy
 
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Database**: MongoDB + Mongoose
-- **Icons**: Lucide React
-- **Effects**: React Confetti
-
-## 📝 Environment Variables
-
-Create a `.env.local` file with:
-
-```bash
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/database
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-## 🚢 Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project in [Vercel](https://vercel.com)
-3. Add `MONGODB_URI` in Environment Variables
-4. Deploy!
-
-### Other Platforms
-
-Works with any Node.js hosting:
-- Netlify
-- Railway
-- Render
-- AWS Amplify
-
-## 💝 The Story
-
-This is a celebration of Patricia ("The Peruvian Tornado") and Igor ("The Anchor"), marking their journey from a language app connection to concrete plans for a future together in Cusco.
+O projeto é automaticamente distribuído via **Vercel** e integrado ao domínio profissional:
+👉 **[www.ispforense.com.br](http://www.ispforense.com.br)**
 
 ---
-
-Built with ❤️ by Igor for Patricia
+**Igor de Jesus Soares Penha**
+*Perito Judicial em Computação Forense | Especialista em IA*

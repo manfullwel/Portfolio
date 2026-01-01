@@ -3,71 +3,63 @@
 @tailwind utilities;
 
 :root {
-  --background: 248, 249, 250;
-  /* Slate-50 / Light Grey */
+  --background: 248, 250, 252;
+  /* slate-50 */
   --foreground: 15, 23, 42;
-  /* Slate-900 */
-  --accent: 0, 123, 255;
-  /* iOS Blue */
-  --accent-glow: rgba(0, 123, 255, 0.2);
-  --success: 40, 167, 69;
-  /* Modern Green */
+  /* slate-900 */
+  --primary: 30, 41, 59;
+  /* slate-800 - Institucional */
+  --accent: 37, 99, 235;
+  /* Blue-600 */
 }
 
 @layer base {
   body {
-    @apply bg-[#F8F9FA] text-slate-900 antialiased selection:bg-blue-500/20;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #F8F9FA 100%);
+    @apply bg-slate-50 text-slate-900;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
   }
 }
 
-/* --- Premium Layout & Depth (Light Mode) --- */
+/* --- Institutional Legal Design --- */
 
-.glass-panel {
-  @apply backdrop-blur-2xl bg-white/70 border border-slate-200/50 shadow-ios-panel;
+.report-panel {
+  @apply bg-white border border-slate-200 shadow-sm rounded-none md:rounded-lg;
 }
 
-.glass-card {
-  @apply backdrop-blur-xl bg-white/40 border border-slate-200/60 rounded-[2.5rem] transition-all duration-700;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02) inset;
+.report-card {
+  @apply bg-white border-l-4 border-slate-800 p-8 shadow-sm transition-all hover:shadow-md;
 }
 
-.glass-card:hover {
-  @apply border-blue-500/30 -translate-y-2 shadow-ios-card;
-  background: rgba(255, 255, 255, 0.8);
+.heading-judicial {
+  @apply text-slate-900 font-serif font-black tracking-tight;
 }
 
-/* iOS-Style Icon Container */
-.icon-app {
-  @apply w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 relative overflow-hidden;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(241, 245, 249, 1) 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+.text-formal {
+  @apply leading-relaxed text-slate-700 font-sans;
 }
 
-.icon-app:hover {
-  @apply scale-110 rotate-3;
-  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
+.label-mono {
+  @apply font-mono text-[10px] uppercase tracking-widest text-slate-400 font-bold;
 }
 
-/* Typography Mastery */
-.heading-premium {
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-950 via-slate-800 to-slate-600 font-bold tracking-tight;
+/* UI Elements */
+.btn-legal {
+  @apply inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-bold rounded-sm hover:bg-slate-800 transition-colors uppercase text-xs tracking-widest;
 }
 
-.text-caption {
-  @apply text-slate-500 font-mono text-[10px] uppercase tracking-[0.2em] mb-2 block;
+section {
+  @apply py-20 px-6 max-w-5xl mx-auto;
 }
 
-/* Seamless Animations */
-.stagger-in>* {
-  @apply opacity-0;
-}
-
-/* Custom Scrollbar - Elegant & Thin */
+/* Custom Scrollbar - Hidden/Thin to look like a document */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -75,10 +67,5 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded-full hover:bg-blue-500/40 transition-colors;
-}
-
-/* Sections */
-section {
-  @apply py-32 px-6;
+  @apply bg-slate-200;
 }
