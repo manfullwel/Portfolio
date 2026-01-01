@@ -36,23 +36,23 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     className="text-xl font-bold tracking-tighter flex items-center gap-3"
                 >
-                    <div className="icon-app w-10 h-10 rounded-xl bg-emerald-500 shadow-lg shadow-emerald-500/20">
-                        <Shield className="text-slate-950 w-5 h-5" />
+                    <div className="icon-app w-10 h-10 rounded-xl bg-blue-600 shadow-lg shadow-blue-500/20 border-none">
+                        <Shield className="text-white w-5 h-5" />
                     </div>
-                    <span className="hidden sm:block font-bold">ISP <span className="text-emerald-500">FORENSE</span></span>
+                    <span className="hidden sm:block font-bold text-slate-900">ISP <span className="text-blue-600">FORENSE</span></span>
                 </motion.div>
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex gap-10">
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="text-slate-400 hover:text-white transition-colors text-sm font-medium tracking-wide uppercase hover:scale-105 transform duration-300">{link.name}</a>
+                        <a key={link.name} href={link.href} className="text-slate-600 hover:text-blue-600 transition-colors text-sm font-semibold tracking-wide uppercase hover:scale-105 transform duration-300">{link.name}</a>
                     ))}
                 </div>
 
                 {/* Mobile Toggle */}
                 <button className="md:hidden z-[110] relative" onClick={() => setIsOpen(!isOpen)}>
-                    <div className="icon-app w-10 h-10">
-                        {isOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-slate-300" />}
+                    <div className="icon-app w-10 h-10 bg-white shadow-sm border-slate-200">
+                        {isOpen ? <X className="w-5 h-5 text-slate-900" /> : <Menu className="w-5 h-5 text-slate-600" />}
                     </div>
                 </button>
             </div>
@@ -64,7 +64,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
                         animate={{ opacity: 1, backdropFilter: 'blur(40px)' }}
                         exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-                        className="fixed inset-0 bg-slate-950/80 md:hidden flex flex-col items-center justify-center z-[105]"
+                        className="fixed inset-0 bg-white/80 md:hidden flex flex-col items-center justify-center z-[105]"
                     >
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
@@ -78,7 +78,7 @@ const Navbar = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="text-4xl font-bold tracking-tight text-white hover:text-emerald-500 transform transition-all active:scale-90"
+                                    className="text-4xl font-bold tracking-tight text-slate-900 hover:text-blue-600 transform transition-all active:scale-90"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {link.name}
@@ -94,62 +94,53 @@ const Navbar = () => {
 
 const Hero = () => (
     <section id="home" className="min-h-screen pt-40 pb-20 flex flex-col items-center justify-center relative overflow-hidden">
-        {/* Animated Background Mesh */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none opacity-40 animate-pulse" />
+        {/* Animated Background Mesh (Light) */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none opacity-40 animate-pulse" />
 
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center max-w-5xl px-4 z-10"
+            className="text-center z-10 px-6 max-w-4xl"
         >
             <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono mb-8 tracking-[0.2em] uppercase"
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="mx-auto icon-app w-24 h-24 mb-10 bg-white border-slate-200"
             >
-                <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                Disponível para perícias em 2026
+                <Shield className="text-blue-600 w-12 h-12" />
             </motion.div>
 
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 heading-premium leading-[1.1] md:leading-[1.05]">
-                Inteligência <br />
-                <span className="text-emerald-500">Forense Digital</span>
+            <h1 className="text-6xl md:text-8xl font-black mb-6 heading-premium leading-[0.9] text-slate-900">
+                ISP FORENSE
             </h1>
-
-            <p className="text-xl md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-                Perito Judicial especializado em identificação de <span className="text-white font-medium">Deepfakes</span>,
-                investigação de <span className="text-white font-medium">Fraudes Bancárias</span> e Mobile Forensics.
+            <p className="text-xl md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed mb-12">
+                Justiça e Precisão em Prova Digital.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-6">
-                <button className="glass-panel hover:bg-emerald-500 hover:text-slate-950 px-10 py-5 rounded-2xl font-bold transition-all flex items-center gap-3 group text-lg border-emerald-500/20 hover:border-emerald-500">
+            <div className="flex flex-wrap justify-center gap-6 mb-12">
+                <button className="glass-panel border-blue-100 hover:bg-blue-600 hover:text-white px-10 py-5 rounded-3xl font-bold transition-all flex items-center gap-3 group text-lg shadow-xl shadow-blue-500/10">
                     Solicitar Laudo <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </button>
-                <button className="glass-panel px-10 py-5 rounded-2xl font-bold transition-all border-white/5 hover:border-white/20 text-lg">
+                <button className="glass-panel border-slate-200 bg-white/50 px-10 py-5 rounded-3xl font-bold transition-all text-lg hover:border-blue-300">
                     Credenciais
                 </button>
             </div>
 
-            {/* OS-Style Terminal Card */}
+            {/* iOS-Style Terminal Card */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
-                className="mt-24 glass-panel rounded-[2rem] p-6 text-left max-w-2xl mx-auto border-emerald-500/10 shadow-2xl"
+                className="mt-12 glass-panel rounded-[2rem] p-6 text-left max-w-2xl mx-auto border-slate-200 shadow-2xl bg-white/80"
             >
                 <div className="flex gap-2 mb-4">
-                    <div className="w-3 h-3 rounded-full bg-white/10" />
-                    <div className="w-3 h-3 rounded-full bg-white/10" />
-                    <div className="w-3 h-3 rounded-full bg-white/10" />
+                    <div className="w-3 h-3 rounded-full bg-slate-200" />
+                    <div className="w-3 h-3 rounded-full bg-slate-200" />
+                    <div className="w-3 h-3 rounded-full bg-slate-200" />
                 </div>
-                <div className="font-mono text-sm text-slate-500 space-y-1">
-                    <p><span className="text-emerald-500">perito@forense:</span><span className="text-slate-300"> ~ forensics --check-deepfake video_evidencia.mp4</span></p>
-                    <p className="text-emerald-400/80 animate-pulse">[SCANNING] ISO 27037 Principles via Forensics Core v4.3...</p>
+                <div className="font-mono text-sm text-slate-400 space-y-1">
+                    <p><span className="text-blue-600">perito@forense:</span><span className="text-slate-600"> ~ forensics --verify-integrity</span></p>
+                    <p className="text-blue-500/80 animate-pulse text-xs uppercase tracking-tighter shadow-sm bg-white p-2 rounded-lg mt-2 inline-block">ISO 27037 Principles v4.3 Active</p>
                 </div>
             </motion.div>
         </motion.div>
@@ -173,45 +164,37 @@ const Expertise = () => {
         {
             icon: Cpu,
             title: "Auditoria de IA",
-            desc: "Perícia especializada em mídia sintética e detecção avançada de Deepfakes.",
-            tags: ["ML Forensics", "Synthetic Media"]
-        },
-        {
-            icon: Globe,
-            title: "Forense Global",
-            desc: "Atuação em casos internacionais com proficiência em múltiplos idiomas.",
-            tags: ["Transnacional", "ASU Standard"]
+            desc: "Verificação de métricas e autenticidade em mídias sintéticas (Deepfakes).",
+            tags: ["ML Metrics", "Synthetic Media"]
         }
     ];
 
     return (
-        <section id="expertise" className="relative">
-            <div className="max-w-7xl mx-auto px-4">
-                <div className="mb-20 text-center">
-                    <span className="text-caption">Especialização Técnica</span>
-                    <h2 className="text-4xl md:text-5xl font-bold heading-premium">Expertise Forense</h2>
+        <section id="expertise" className="relative bg-white/30">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="mb-20">
+                    <span className="text-caption">Especialidades Técnicas</span>
+                    <h2 className="text-5xl md:text-6xl font-bold heading-premium mb-6">Expertise Forense</h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {skills.map((skill, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1, duration: 0.8 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            transition={{ delay: i * 0.1 }}
                             viewport={{ once: true }}
-                            className="glass-card p-10 group"
+                            className="glass-card p-10 group bg-white/70 border-slate-200 hover:border-blue-400 h-full flex flex-col"
                         >
-                            <div className="icon-app mb-8 bg-emerald-500/5 group-hover:bg-emerald-500/20 group-hover:scale-110 transition-all">
-                                <skill.icon className="w-6 h-6 text-emerald-500" />
+                            <div className="icon-app mb-8 group-hover:rotate-6 bg-blue-50 border-blue-100">
+                                <skill.icon className="text-blue-600 w-7 h-7" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">{skill.title}</h3>
-                            <p className="text-slate-400 text-sm mb-8 leading-relaxed font-light">{skill.desc}</p>
-                            <div className="flex flex-wrap gap-2">
-                                {skill.details?.map(tag => (
-                                    <span key={tag} className="text-[10px] font-mono bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/5">{tag}</span>
-                                )) || skill.tags.map(tag => (
-                                    <span key={tag} className="text-[10px] font-mono bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/5">{tag}</span>
+                            <h3 className="text-2xl font-bold mb-4 text-slate-900">{skill.title}</h3>
+                            <p className="text-slate-600 leading-relaxed mb-8 flex-grow">{skill.desc}</p>
+                            <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-100">
+                                {skill.tags.map(tag => (
+                                    <span key={tag} className="text-[10px] font-mono uppercase tracking-widest text-slate-400 bg-slate-50 px-2 py-1 rounded-md">{tag}</span>
                                 ))}
                             </div>
                         </motion.div>
@@ -225,60 +208,56 @@ const Expertise = () => {
 const Experience = () => {
     const experiences = [
         {
-            period: "Presente",
-            role: "Perito Judicial",
+            year: "2024 - Presente",
+            role: "Especialista Forense Senior",
             company: "ISP Forense",
-            desc: "Liderança técnica em perícias de computação forense e detecção de mídias sintéticas via IA.",
-            tags: ["Judicial", "Deepfakes"]
+            desc: "Liderança em investigações cibernéticas e perícias judiciais complexas.",
+            icon: Shield
         },
         {
-            period: "Anterior",
-            role: "Analista Financeiro",
-            company: "Setor Bancário",
-            desc: "Detecção de fraudes eletrônicas e negociações internacionais em ambiente crítico.",
-            tags: ["Anti-Fraud", "Baking"]
+            year: "2020 - 2024",
+            role: "Analista de Segurança Digital",
+            company: "Consultoria Privada",
+            desc: "Prevenção a fraudes financeiras e recuperação de ativos digitais.",
+            icon: Fingerprint
         },
         {
-            period: "10+ Anos",
-            role: "Hardware Expert",
-            company: "Consultoria Mobile",
-            desc: "Especialista em firmware e eletrônica aplicada à recuperação de evidências físicas.",
-            tags: ["Chip-off", "Firmware"]
+            year: "2015 - 2020",
+            role: "Técnico em Hardware Móvel",
+            company: "Lab Tech",
+            desc: "Recuperação de dados e análise física de dispositivos danificados.",
+            icon: Cpu
         }
     ];
 
     return (
-        <section id="resume" className="bg-white/[0.01]">
-            <div className="max-w-5xl mx-auto px-4">
+        <section id="resume" className="relative border-b border-slate-200/50">
+            <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-24">
-                    <span className="text-caption">Caminho Profissional</span>
-                    <h2 className="text-4xl md:text-5xl font-bold heading-premium text-white">Trajetória</h2>
+                    <span className="text-caption">Trajetória Profissional</span>
+                    <h2 className="text-5xl md:text-7xl font-bold heading-premium">Curriculum Vitae</h2>
                 </div>
 
-                <div className="space-y-16">
+                <div className="space-y-12">
                     {experiences.map((exp, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.1, duration: 0.8 }}
-                            className="flex flex-col md:flex-row gap-10 items-start md:items-center group"
+                            transition={{ delay: i * 0.1 }}
+                            viewport={{ once: true }}
+                            className="glass-card p-8 md:p-12 flex flex-col md:flex-row gap-10 items-start md:items-center bg-white/70 border-slate-200"
                         >
-                            <div className="w-40 shrink-0">
-                                <span className="text-emerald-500 font-mono text-sm tracking-tighter uppercase">{exp.period}</span>
+                            <div className="text-2xl font-black text-blue-600 font-mono tracking-tighter md:w-48">
+                                {exp.year}
                             </div>
-                            <div className="glass-card flex-1 p-10 relative overflow-hidden group-hover:bg-white/[0.05] transition-all">
-                                <div className="absolute top-0 right-0 p-10 opacity-[0.02] group-hover:scale-150 transition-transform duration-1000">
-                                    <Terminal size={120} />
-                                </div>
-                                <h3 className="text-2xl font-bold mb-1">{exp.role}</h3>
-                                <p className="text-emerald-500/80 font-medium mb-4">{exp.company}</p>
-                                <p className="text-slate-400 font-light mb-6 leading-relaxed max-w-2xl">{exp.desc}</p>
-                                <div className="flex gap-3">
-                                    {exp.tags.map(tag => (
-                                        <span key={tag} className="text-[10px] uppercase tracking-widest bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-lg">{tag}</span>
-                                    ))}
-                                </div>
+                            <div className="flex-grow">
+                                <h3 className="text-3xl font-bold mb-2 text-slate-900">{exp.role}</h3>
+                                <p className="text-blue-500 font-bold tracking-widest uppercase text-xs mb-4">{exp.company}</p>
+                                <p className="text-slate-600 text-lg leading-relaxed max-w-2xl">{exp.desc}</p>
+                            </div>
+                            <div className="icon-app hidden md:flex bg-slate-50 border-slate-200">
+                                <exp.icon size={24} className="text-slate-400 group-hover:text-blue-600" />
                             </div>
                         </motion.div>
                     ))}
@@ -288,73 +267,6 @@ const Experience = () => {
     );
 };
 
-const EducationAndLanguages = () => (
-    <section className="relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full" />
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className="space-y-12"
-            >
-                <div>
-                    <span className="text-caption">Certificações</span>
-                    <h2 className="text-4xl font-bold heading-premium mb-10">Qualificações</h2>
-                </div>
-                <div className="space-y-6">
-                    {[
-                        { title: "Pós em Inteligência Artificial", focus: "Deepfakes & Fraudes" },
-                        { title: "Graduação em ADS", focus: "Desenvolvimento Forense" },
-                        { title: "Metodologia Marcos Monteiro", focus: "Perícia Judicial" },
-                        { title: "Google Cybersecurity", focus: "Sec-Ops Standard" }
-                    ].map((edu, i) => (
-                        <div key={i} className="glass-card p-6 flex items-center justify-between group">
-                            <div>
-                                <h4 className="font-bold text-lg group-hover:text-emerald-400 transition-colors">{edu.title}</h4>
-                                <p className="text-sm text-slate-500">{edu.focus}</p>
-                            </div>
-                            <div className="icon-app w-10 h-10 group-hover:bg-emerald-500/20">
-                                <ChevronRight className="w-4 h-4 text-emerald-500" />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className="space-y-12"
-            >
-                <div>
-                    <span className="text-caption">Atuação Global</span>
-                    <h2 className="text-4xl font-bold heading-premium mb-10">Idiomas</h2>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {[
-                        { lang: 'Espanhol', level: 'Fluente / Nativo' },
-                        { lang: 'Inglês', level: 'ASU Technical' },
-                        { lang: 'Russo', level: 'Advanced' },
-                        { lang: 'Português', level: 'Nativo' }
-                    ].map((item) => (
-                        <div key={item.lang} className="glass-card p-8 group">
-                            <span className="text-emerald-500 font-mono text-xs mb-3 block">PERITO // {item.lang}</span>
-                            <span className="text-xl font-bold group-hover:text-emerald-400 transition-colors">{item.level}</span>
-                        </div>
-                    ))}
-                </div>
-                <div className="glass-panel p-10 rounded-[2.5rem] border-white/5 relative bg-emerald-500/5">
-                    <p className="text-lg italic text-slate-300 font-light leading-relaxed">
-                        "Proficiência linguística validada para laudos e negociações transnacionais."
-                    </p>
-                </div>
-            </motion.div>
-        </div>
-    </section>
-);
-
-// --- Dynamic Sections ---
-
 const BlogSection = () => {
     const [posts, setPosts] = useState([]);
 
@@ -363,27 +275,40 @@ const BlogSection = () => {
     }, []);
 
     return (
-        <section id="blog">
-            <div className="max-w-7xl mx-auto px-4">
-                <div className="mb-16 text-center">
-                    <span className="text-caption">Análises Técnicas</span>
-                    <h2 className="text-4xl md:text-5xl font-bold heading-premium">Blog Forense</h2>
+        <section id="blog" className="bg-slate-50/50">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                    <div>
+                        <span className="text-caption">Artigos e Insights</span>
+                        <h2 className="text-5xl md:text-6xl font-bold heading-premium">Doutrina Técnica</h2>
+                    </div>
+                    <button className="text-blue-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                        Ver Todos <ArrowRight size={20} />
+                    </button>
                 </div>
-                <div className="grid md:grid-cols-2 gap-10">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     {posts.map((post, i) => (
                         <motion.div
-                            key={post.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
+                            key={i}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="glass-card p-10 group cursor-pointer relative overflow-hidden"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            viewport={{ once: true }}
+                            className="glass-card overflow-hidden group border-slate-200 bg-white"
                         >
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl pointer-events-none" />
-                            <span className="text-caption text-emerald-500/60 mb-6">{post.date}</span>
-                            <h3 className="text-3xl font-bold text-white mb-6 group-hover:text-emerald-400 transition-colors leading-tight">{post.title}</h3>
-                            <p className="text-slate-400 mb-10 leading-relaxed font-light">{post.excerpt}</p>
-                            <div className="flex items-center text-emerald-500 font-bold uppercase tracking-widest text-xs group-hover:gap-4 transition-all">
-                                Protocolo Completo <ArrowRight className="w-4 h-4" />
+                            <div className="h-48 bg-slate-100 relative overflow-hidden">
+                                <div className="absolute inset-0 bg-blue-600/5 mix-blend-overlay group-hover:opacity-0 transition-opacity" />
+                                <div className="p-8 flex items-center justify-center h-full">
+                                    <FileText className="w-16 h-16 text-slate-200 group-hover:text-blue-500/20 group-hover:scale-110 transition-all duration-700" />
+                                </div>
+                            </div>
+                            <div className="p-10">
+                                <span className="text-blue-600 text-[10px] font-mono font-bold tracking-[0.3em] uppercase mb-4 block">{post.tag}</span>
+                                <h3 className="text-3xl font-bold mb-4 text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">{post.title}</h3>
+                                <p className="text-slate-600 mb-8 leading-relaxed line-clamp-2">{post.excerpt}</p>
+                                <a href="#" className="inline-flex items-center gap-2 font-bold text-slate-900 group/link">
+                                    Ler Protocolo <ChevronRight className="w-5 h-5 group-hover/link:translate-x-2 transition-transform" />
+                                </a>
                             </div>
                         </motion.div>
                     ))}
@@ -394,35 +319,92 @@ const BlogSection = () => {
 };
 
 const LegalIntegration = () => {
-    const [legalData, setLegalData] = useState([]);
+    const [juris, setJuris] = useState([]);
 
     useEffect(() => {
-        fetch('/api/legal').then(res => res.json()).then(data => setLegalData(data));
+        fetch('/api/legal').then(res => res.json()).then(data => setJuris(data));
     }, []);
 
     return (
-        <section className="bg-slate-950">
-            <div className="max-w-7xl mx-auto px-4">
-                <div className="glass-panel p-16 rounded-[3rem] relative shadow-emerald-500/5">
-                    <div className="z-10 relative">
-                        <div className="flex items-center gap-4 mb-12">
-                            <div className="icon-app bg-emerald-500 shadow-xl shadow-emerald-500/20">
-                                <BookOpen size={24} className="text-slate-950" />
+        <section className="relative overflow-hidden bg-white">
+            <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-24 items-center">
+                <div>
+                    <span className="text-caption">Suporte Jurídico</span>
+                    <h2 className="text-5xl md:text-7xl font-bold heading-premium mb-8 leading-tight">Jurisprudência Técnica</h2>
+                    <p className="text-slate-600 text-xl leading-relaxed mb-12">
+                        Base de dados integrada para consulta de precedentes sobre validade de provas digitais e dispositivos eletrônicos.
+                    </p>
+                    <div className="flex gap-4">
+                        <div className="icon-app bg-blue-50 border-blue-100"><Award className="text-blue-600" /></div>
+                        <div className="icon-app bg-slate-50 border-slate-200"><Globe className="text-slate-400" /></div>
+                    </div>
+                </div>
+
+                <div className="space-y-6">
+                    {juris.map((item, i) => (
+                        <motion.div
+                            key={i}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, x: 50 }}
+                            viewport={{ once: true }}
+                            className="glass-card p-6 bg-white border-slate-100 flex gap-6 items-center hover:border-blue-200"
+                        >
+                            <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100">
+                                <BookOpen size={20} className="text-slate-400" />
                             </div>
-                            <h2 className="text-3xl font-bold text-white">Jurisprudência & Casos</h2>
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-lg mb-1">{item.case}</h4>
+                                <p className="text-xs text-slate-400 font-mono uppercase tracking-widest">{item.court} | {item.status}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const EducationAndLanguages = () => {
+    const items = [
+        { title: "Certificação em Forense Mobile", org: "UF Forensic Lab", date: "2023" },
+        { title: "Post-Graduação em IA e ML", org: "Tech Institute", date: "2021" },
+        { title: "Sistemas de Informação", org: "Universidade Federal", date: "2018" }
+    ];
+
+    return (
+        <section className="bg-slate-50/50">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="grid md:grid-cols-3 gap-12">
+                    <div className="md:col-span-2">
+                        <span className="text-caption">Formação Acadêmica</span>
+                        <h2 className="text-5xl font-bold heading-premium mb-12">Educação</h2>
+                        <div className="grid gap-6">
+                            {items.map((item, i) => (
+                                <div key={i} className="glass-card p-6 flex justify-between items-center bg-white border-slate-100">
+                                    <div>
+                                        <h4 className="text-xl font-bold text-slate-900">{item.title}</h4>
+                                        <p className="text-blue-600 font-medium">{item.org}</p>
+                                    </div>
+                                    <span className="font-mono text-slate-400">{item.date}</span>
+                                </div>
+                            ))}
                         </div>
-                        <div className="grid md:grid-cols-2 gap-12">
-                            {legalData.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    className="border-l-2 border-emerald-500/20 pl-8"
-                                >
-                                    <span className="text-caption text-emerald-500/40">{item.type}</span>
-                                    <h4 className="text-xl font-bold text-slate-100 mb-3">{item.caseTitle}</h4>
-                                    <p className="text-slate-400 text-sm font-light leading-relaxed">{item.summary}</p>
-                                </motion.div>
+                    </div>
+
+                    <div className="glass-panel p-10 rounded-[3rem] border-slate-200 bg-white/80">
+                        <span className="text-caption">Comunicação</span>
+                        <h3 className="text-3xl font-bold heading-premium mb-10">Idiomas</h3>
+                        <div className="space-y-8">
+                            {[
+                                { lang: "Português", level: "Nativo" },
+                                { lang: "Espanhol", level: "Fluente" },
+                                { lang: "Inglês", level: "Avançado" },
+                                { lang: "Russo", level: "Técnico" }
+                            ].map((l, i) => (
+                                <div key={i} className="flex justify-between items-end border-b border-slate-100 pb-2">
+                                    <span className="text-lg font-bold text-slate-900">{l.lang}</span>
+                                    <span className="text-blue-600 text-xs font-mono uppercase tracking-widest">{l.level}</span>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -433,13 +415,13 @@ const LegalIntegration = () => {
 };
 
 const ContactSection = () => {
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState('idle');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('sending');
         const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
+        const data = Object.fromEntries(formData);
 
         try {
             const res = await fetch('/api/contact', {
@@ -455,30 +437,30 @@ const ContactSection = () => {
     };
 
     return (
-        <section id="contact" className="relative">
+        <section id="contact" className="relative bg-white">
             <div className="max-w-5xl mx-auto px-4 text-center">
                 <span className="text-caption">Atendimento Judiciário</span>
                 <h2 className="text-5xl md:text-6xl font-bold heading-premium mb-16">Solicitar Perícia</h2>
 
-                <form onSubmit={handleSubmit} className="glass-panel p-10 md:p-20 rounded-[4rem] text-left">
+                <form onSubmit={handleSubmit} className="glass-panel p-10 md:p-20 rounded-[4rem] text-left bg-white/90 border-slate-200 shadow-2xl">
                     <div className="grid md:grid-cols-2 gap-10 mb-10">
                         <div className="space-y-3">
                             <label className="text-caption mb-0 ml-4">Nome Completo</label>
-                            <input name="name" required className="w-full bg-white/5 border border-white/5 rounded-3xl px-8 py-5 text-white focus:bg-white/10 focus:border-emerald-500/40 focus:outline-none transition-all placeholder-slate-600" placeholder="Nome do Requerente" />
+                            <input name="name" required className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 py-5 text-slate-900 focus:bg-white focus:border-blue-500/40 focus:outline-none transition-all placeholder-slate-400" placeholder="Nome do Requerente" />
                         </div>
                         <div className="space-y-3">
                             <label className="text-caption mb-0 ml-4">E-mail Corporativo</label>
-                            <input name="email" type="email" required className="w-full bg-white/5 border border-white/5 rounded-3xl px-8 py-5 text-white focus:bg-white/10 focus:border-emerald-500/40 focus:outline-none transition-all placeholder-slate-600" placeholder="email@escritorio.com" />
+                            <input name="email" type="email" required className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 py-5 text-slate-900 focus:bg-white focus:border-blue-500/40 focus:outline-none transition-all placeholder-slate-400" placeholder="email@escritorio.com" />
                         </div>
                     </div>
                     <div className="space-y-3 mb-12">
                         <label className="text-caption mb-0 ml-4">Resumo do Caso / Objeto da Perícia</label>
-                        <textarea name="message" rows="5" required className="w-full bg-white/5 border border-white/5 rounded-3xl px-8 py-5 text-white focus:bg-white/10 focus:border-emerald-500/40 focus:outline-none transition-all placeholder-slate-600 resize-none" placeholder="Descreva brevemente a necessidade técnica..."></textarea>
+                        <textarea name="message" rows="5" required className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 py-5 text-slate-900 focus:bg-white focus:border-blue-500/40 focus:outline-none transition-all placeholder-slate-400 resize-none" placeholder="Descreva brevemente a necessidade técnica..."></textarea>
                     </div>
                     <button
                         type="submit"
                         disabled={status === 'sending'}
-                        className="w-full glass-card py-6 rounded-3xl text-emerald-500 font-bold tracking-[0.3em] uppercase hover:bg-emerald-500 hover:text-slate-950 transition-all duration-700 bg-emerald-500/5 group"
+                        className="w-full glass-card py-6 rounded-3xl text-blue-600 font-bold tracking-[0.3em] uppercase hover:bg-blue-600 hover:text-white transition-all duration-700 bg-blue-50/50 border-blue-100 group shadow-lg shadow-blue-500/10"
                     >
                         {status === 'sending' ? 'Enviando...' : status === 'success' ? 'Protocolado com Sucesso' : (
                             <span className="flex items-center justify-center gap-4">
@@ -486,7 +468,7 @@ const ContactSection = () => {
                             </span>
                         )}
                     </button>
-                    {status === 'error' && <p className="text-red-400 mt-4 text-center text-sm font-mono">Falha no servidor. Tente novamente.</p>}
+                    {status === 'error' && <p className="text-red-500 mt-4 text-center text-sm font-mono">Falha no servidor. Tente novamente.</p>}
                 </form>
             </div>
         </section>
@@ -494,28 +476,28 @@ const ContactSection = () => {
 };
 
 const Footer = () => (
-    <footer className="py-20 border-t border-white/5">
+    <footer className="py-20 border-t border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 items-center gap-12">
             <div className="text-center md:text-left order-2 md:order-1">
                 <h3 className="text-2xl font-bold heading-premium mb-2">ISP FORENSE</h3>
-                <p className="text-slate-500 text-xs font-mono tracking-widest uppercase">Digital Proof Mastery</p>
+                <p className="text-slate-400 text-xs font-mono tracking-widest uppercase">Justiça e Precisão Digital</p>
             </div>
 
             <div className="flex justify-center gap-10 order-1 md:order-2">
                 {[Linkedin, Github, Mail].map((Icon, i) => (
-                    <a key={i} href="#" className="icon-app w-12 h-12 bg-white/5 border-white/5 hover:border-emerald-500/20">
-                        <Icon size={20} className="text-slate-400 hover:text-emerald-500 transition-colors" />
+                    <a key={i} href="#" className="icon-app w-12 h-12 bg-white border-slate-200 hover:border-blue-500/20 group">
+                        <Icon size={20} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
                     </a>
                 ))}
             </div>
 
             <div className="text-center md:text-right order-3">
-                <p className="text-slate-600 text-[10px] font-mono tracking-widest uppercase mb-1">
+                <p className="text-slate-400 text-[10px] font-mono tracking-widest uppercase mb-1">
                     © 2026 ISP Forense
                 </p>
-                <div className="flex justify-center md:justify-end gap-1 items-center opacity-30 grayscale hover:grayscale-0 transition-all">
+                <div className="flex justify-center md:justify-end gap-1 items-center opacity-30 grayscale hover:grayscale-0 transition-all text-slate-900">
                     <Shield size={10} />
-                    <span className="text-[8px] font-mono uppercase">Secure Lab Environment</span>
+                    <span className="text-[8px] font-mono uppercase">Ambiente de Perícia Seguro</span>
                 </div>
             </div>
         </div>
@@ -524,7 +506,7 @@ const Footer = () => (
 
 export default function Home() {
     return (
-        <main className="bg-slate-950 min-h-screen text-slate-50">
+        <main className="bg-[#F8F9FA] min-h-screen text-slate-900">
             <Navbar />
             <Hero />
             <Expertise />

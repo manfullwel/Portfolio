@@ -22,8 +22,8 @@ module.exports = {
                 },
             },
             boxShadow: {
-                'ios-panel': '0 32px 64px -16px rgba(0, 0, 0, 0.6)',
-                'ios-card': '0 20px 40px -15px rgba(0, 0, 0, 0.5)',
+                'ios-panel': '0 20px 40px -10px rgba(0, 0, 0, 0.05), 0 10px 20px -5px rgba(0, 0, 0, 0.02)',
+                'ios-card': '0 30px 60px -12px rgba(0, 0, 0, 0.08), 0 18px 36px -18px rgba(0, 0, 0, 0.05)',
             },
             animation: {
                 'tornado-spin': 'tornado-spin 3s ease-in-out forwards',

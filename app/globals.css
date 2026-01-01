@@ -3,56 +3,61 @@
 @tailwind utilities;
 
 :root {
-  --background: 2, 6, 23;
-  --foreground: 248, 250, 252;
-  /* Slate-50 for better contrast */
-  --accent: 16, 185, 129;
-  --accent-glow: rgba(16, 185, 129, 0.4);
+  --background: 248, 249, 250;
+  /* Slate-50 / Light Grey */
+  --foreground: 15, 23, 42;
+  /* Slate-900 */
+  --accent: 0, 123, 255;
+  /* iOS Blue */
+  --accent-glow: rgba(0, 123, 255, 0.2);
+  --success: 40, 167, 69;
+  /* Modern Green */
 }
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-50 antialiased selection:bg-emerald-500/30;
+    @apply bg-[#F8F9FA] text-slate-900 antialiased selection:bg-blue-500/20;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    background: radial-gradient(circle at 50% 0%, #050b24 0%, #020617 100%);
+    background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #F8F9FA 100%);
   }
 }
 
-/* --- Premium Layout & Depth --- */
+/* --- Premium Layout & Depth (Light Mode) --- */
 
 .glass-panel {
-  @apply backdrop-blur-2xl bg-slate-900/60 border border-white/[0.08] shadow-ios-panel;
+  @apply backdrop-blur-2xl bg-white/70 border border-slate-200/50 shadow-ios-panel;
 }
 
 .glass-card {
-  @apply backdrop-blur-xl bg-white/[0.03] border border-white/[0.06] rounded-[2.5rem] transition-all duration-700;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  @apply backdrop-blur-xl bg-white/40 border border-slate-200/60 rounded-[2.5rem] transition-all duration-700;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02) inset;
 }
 
 .glass-card:hover {
-  @apply border-emerald-500/40 -translate-y-2 shadow-ios-card;
-  background: rgba(255, 255, 255, 0.05);
+  @apply border-blue-500/30 -translate-y-2 shadow-ios-card;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 /* iOS-Style Icon Container */
 .icon-app {
   @apply w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 relative overflow-hidden;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(241, 245, 249, 1) 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .icon-app:hover {
   @apply scale-110 rotate-3;
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
 }
 
 /* Typography Mastery */
 .heading-premium {
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-slate-200 to-slate-500 font-bold tracking-tight;
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-950 via-slate-800 to-slate-600 font-bold tracking-tight;
 }
 
 .text-caption {
-  @apply text-slate-400 font-mono text-[10px] uppercase tracking-[0.2em] mb-2 block;
+  @apply text-slate-500 font-mono text-[10px] uppercase tracking-[0.2em] mb-2 block;
 }
 
 /* Seamless Animations */
@@ -70,7 +75,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-800/80 rounded-full hover:bg-emerald-500/40 transition-colors;
+  @apply bg-slate-300 rounded-full hover:bg-blue-500/40 transition-colors;
 }
 
 /* Sections */
