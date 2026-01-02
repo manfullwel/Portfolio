@@ -3,91 +3,102 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    Shield, Scale, Smartphone, Cpu, Search,
-    CheckSquare, Globe, Mail, FileText,
+    Shield, Smartphone, Cpu, Search,
+    CheckSquare, Mail, Link as LinkIcon,
     ArrowRight, Gavel, Award, Linkedin, Github,
-    Phone, Globe2
+    FileText, Lock
 } from 'lucide-react';
 import Image from 'next/image';
 
-// --- Legal Components ---
+// --- Apple-style Design Components ---
 
 const Header = () => (
-    <header className="fixed w-full top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100 py-5 px-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <header className="fixed w-full top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100 h-16 transition-all">
+        <div className="max-w-6xl mx-auto px-6 h-full flex justify-between items-center">
             <div className="flex items-center gap-3">
-                <div className="w-8 h-8 relative rounded-full overflow-hidden border border-slate-200">
-                    <Image src="/images/profile.png" alt="Igor Penha" fill className="object-cover" />
+                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200">
+                    <Shield size={14} className="text-slate-900" />
                 </div>
                 <div>
-                    <h1 className="font-serif font-black text-sm tracking-tight text-slate-900 leading-none uppercase">Igor J. S. Penha</h1>
-                    <p className="text-[8px] font-mono text-slate-400 uppercase tracking-widest mt-1">Perito Judicial Computacional</p>
+                    <span className="font-bold text-sm tracking-tight text-slate-900">ISP Forense</span>
                 </div>
             </div>
-            <nav className="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+            <nav className="hidden md:flex gap-8 text-[13px] font-medium text-slate-500">
                 <a href="#expertise" className="hover:text-slate-900 transition-colors">Especialidades</a>
                 <a href="#bio" className="hover:text-slate-900 transition-colors">Credenciais</a>
                 <a href="#contact" className="hover:text-slate-900 transition-colors">Contato</a>
             </nav>
+            <a href="#contact" className="px-4 py-2 bg-slate-900 text-white text-[12px] font-semibold rounded-full hover:bg-slate-800 transition-colors">
+                Solicitar Parecer
+            </a>
         </div>
     </header>
 );
 
 const Hero = () => (
-    <section className="min-h-screen flex items-center pt-20 px-0 md:px-6">
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-12 items-stretch overflow-hidden">
-            {/* Left Column: Large Profile Image (CVCyber Style) */}
+    <section className="pt-32 pb-20 px-6 min-h-[90vh] flex items-center justify-center bg-white">
+        <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column: Text */}
             <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="relative bg-slate-100 h-[500px] lg:h-auto min-h-[500px] lg:min-h-[700px]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-8 order-2 lg:order-1"
             >
-                <Image
-                    src="/images/profile.png"
-                    alt="Igor de Jesus Soares Penha - Perito Judicial"
-                    fill
-                    priority
-                    className="object-cover object-top lg:object-center grayscale hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-slate-900/40 to-transparent lg:hidden">
-                    <p className="text-white font-serif italic text-2xl">Igor J. S. Penha</p>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-200 rounded-full">
+                    <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                    <span className="text-[11px] font-semibold text-slate-600 tracking-wide uppercase">Perícia Judicial Computacional</span>
+                </div>
+
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 leading-[1.05]">
+                    Soberania <br />
+                    <span className="text-slate-400">Técnica.</span>
+                </h1>
+
+                <p className="text-lg text-slate-600 leading-relaxed max-w-lg">
+                    Computação Forense de precisão para advogados e magistrados.
+                    Fusão de hardware hacking, análise de vestígios digitais e auditoria de IA.
+                </p>
+
+                <div className="flex flex-wrap gap-4 pt-2">
+                    <a href="#contact" className="btn-primary">
+                        Iniciar Atendimento <ArrowRight size={16} className="ml-2" />
+                    </a>
+                    <a href="#expertise" className="btn-outline">
+                        Ver Especialidades
+                    </a>
+                </div>
+
+                <div className="pt-8 flex items-center gap-6 text-xs font-medium text-slate-400 border-t border-slate-100">
+                    <div className="flex items-center gap-2">
+                        <CheckSquare size={14} className="text-blue-600" />
+                        <span>ISO 27037</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckSquare size={14} className="text-blue-600" />
+                        <span>Cadeia de Custódia</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckSquare size={14} className="text-blue-600" />
+                        <span>Hardware Analysis</span>
+                    </div>
                 </div>
             </motion.div>
 
-            {/* Right Column: High-Authority Text */}
+            {/* Right Column: Hero Image - Corrected Path and improved display */}
             <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="flex flex-col justify-center p-10 lg:p-20 bg-white"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                className="relative order-1 lg:order-2 h-[500px] lg:h-[700px] w-full bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 shadow-sm"
             >
-                <div className="space-y-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-900 text-white rounded-none text-[10px] uppercase font-bold tracking-[0.2em]">
-                        <Gavel size={12} /> Soberania Técnica em Prova Digital
-                    </div>
-
-                    <h2 className="text-6xl md:text-8xl font-serif font-black text-slate-900 leading-[0.85] tracking-tighter">
-                        Rigor <br />
-                        <span className="text-slate-400 italic font-light">Científico</span> no <br />
-                        <span className="text-slate-900">Cenário Jurídico.</span>
-                    </h2>
-
-                    <div className="h-1 w-20 bg-slate-900"></div>
-
-                    <p className="text-xl text-slate-600 leading-relaxed font-sans max-w-xl">
-                        ISP Forense: Elaboração de laudos periciais de alta complexidade.
-                        Domínio absoluto da <span className="text-slate-900 font-bold underline decoration-slate-200 underline-offset-4">eletrônica de precisão</span> e
-                        auditoria científica de <span className="text-slate-900 font-bold underline decoration-slate-200 underline-offset-4">Inteligência Artificial</span>.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                        <a href="#contact" className="btn-legal text-center group">
-                            SOLICITAR PARECER <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                        </a>
-                        <a href="#expertise" className="px-8 py-4 border border-slate-200 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-slate-50 transition-all flex items-center justify-center">
-                            ÁREAS DE ATUAÇÃO
-                        </a>
-                    </div>
-                </div>
+                <Image
+                    src="/image/profile.png"
+                    alt="Igor Penha - Perito Judicial"
+                    fill
+                    priority
+                    className="object-cover object-center hover:scale-105 transition-transform duration-1000"
+                />
             </motion.div>
         </div>
     </section>
@@ -97,38 +108,47 @@ const ExpertiseSection = () => {
     const cards = [
         {
             icon: Smartphone,
-            title: "Perícia Mobile Hardware",
-            label: "CHIP-OFF & EXTRAÇÃO FÍSICA",
-            desc: "Análise avançada no nível do metal. Extração física de dados em dispositivos Android e iOS com base em legado de hardware (Nokia/Sony).",
+            title: "Perícia Mobile & Chip-off",
+            desc: "Extração física avançada. Acesso a dados em dispositivos danificados ou bloqueados através de intervenção direta no hardware de memória.",
+            tag: "Hardware Level"
         },
         {
             icon: Search,
-            title: "Ciber-Investigação",
-            label: "ISO 27037 & CUSTÓDIA",
-            desc: "Rastreio técnico de estelionato digital e fraudes bancárias. Metodologia rigorosa Prof. Marcos Monteiro para blindagem da cadeia de custódia.",
+            title: "Investigação Cibernética",
+            desc: "Rastreamento de fraudes digitais, estelionato e crimes financeiros. Produção de prova técnica robusta para litígios complexos.",
+            tag: "Digital Forensics"
         },
         {
             icon: Cpu,
-            title: "Auditoria de IA",
-            label: "DEEPFAKE DETECTION",
-            desc: "Perícia audiovisual para identificação de deepfakes e manipulações. Especialista em laudos para fraudes complexas em ambientes financeiros.",
+            title: "Auditoria de IA & Deepfakes",
+            desc: "Análise de autenticidade em mídias (áudio/vídeo). Detecção de manipulação por IA generativa e validação de documentos digitais.",
+            tag: "AI Security"
         },
     ];
 
     return (
-        <section id="expertise" className="bg-white border-y border-slate-100 py-32 px-6">
-            <div className="max-w-7xl mx-auto">
-                <div className="mb-20 text-center lg:text-left">
-                    <span className="label-mono">Seção 01: ÁREAS DE SOBERANIA</span>
-                    <h3 className="text-5xl font-serif font-black mt-4 text-slate-900">Corpo Técnico</h3>
+        <section id="expertise" className="py-24 px-6 bg-slate-50">
+            <div className="max-w-6xl mx-auto">
+                <div className="mb-16 text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Competências Técnicas</h2>
+                    <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
+                        Atuação focada na materialidade da prova técnica, garantindo integridade desde a coleta até o laudo final.
+                    </p>
                 </div>
-                <div className="grid md:grid-cols-3 gap-1px bg-slate-200 border border-slate-200">
+
+                <div className="grid md:grid-cols-3 gap-8">
                     {cards.map((card, i) => (
-                        <div key={i} className="bg-white p-12 hover:bg-slate-50 transition-colors group">
-                            <span className="label-mono text-[8px] text-slate-400 mb-6 block tracking-[0.3em]">{card.label}</span>
-                            <card.icon className="text-slate-900 mb-8 group-hover:scale-110 transition-transform" size={32} />
-                            <h4 className="text-2xl font-serif italic mb-6 text-slate-900 underline decoration-slate-200 underline-offset-8">{card.title}</h4>
-                            <p className="text-slate-500 leading-relaxed font-sans text-sm">{card.desc}</p>
+                        <div key={i} className="glass-panel p-8 rounded-2xl hover:shadow-md transition-all group">
+                            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-50 transition-colors">
+                                <card.icon size={24} className="text-slate-900 group-hover:text-blue-600 transition-colors" />
+                            </div>
+                            <div className="mb-4">
+                                <span className="text-[10px] font-bold tracking-wider text-blue-600 uppercase bg-blue-50 px-2 py-1 rounded-full">{card.tag}</span>
+                            </div>
+                            <h3 className="text-xl font-bold text-slate-900 mb-3">{card.title}</h3>
+                            <p className="text-sm text-slate-500 leading-relaxed">
+                                {card.desc}
+                            </p>
                         </div>
                     ))}
                 </div>
@@ -138,106 +158,66 @@ const ExpertiseSection = () => {
 };
 
 const BioSection = () => (
-    <section id="bio" className="py-32 px-6 bg-slate-50">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-20">
-            <div className="lg:col-span-7 space-y-10">
-                <span className="label-mono">Seção 02: PERFIL INSTITUCIONAL</span>
-                <h3 className="text-5xl md:text-6xl font-serif font-black text-slate-900 leading-tight">
-                    Igor de Jesus <br /> Soares Penha
-                </h3>
-                <div className="p-1 border-l-4 border-slate-900 pl-8 space-y-6">
-                    <p className="text-lg text-slate-600 leading-relaxed font-sans">
-                        Perito Judicial e Extrajudicial focado em <span className="font-bold text-slate-900">transparência absoluta</span>.
-                        Com fluência técnica internacional consolidada (ASU English, Russian Malware Analysis, Spanish),
-                        atua na linha de frente contra o cibercrime transnacional.
+    <section id="bio" className="py-24 px-6 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div className="relative">
+                <div className="absolute -inset-4 bg-slate-100 rounded-full opacity-50 blur-3xl"></div>
+                <div className="relative glass-panel p-10 rounded-2xl border border-slate-200">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-6">Credenciais Acadêmicas</h3>
+                    <ul className="space-y-6">
+                        <li className="flex gap-4">
+                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100">
+                                <Award size={18} className="text-slate-700" />
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-slate-900">Pós-Graduação em I.A.</h4>
+                                <p className="text-sm text-slate-500">Especialização em Inteligência Artificial aplicada.</p>
+                            </div>
+                        </li>
+                        <li className="flex gap-4">
+                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100">
+                                <Shield size={18} className="text-slate-700" />
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-slate-900">Google Cybersecurity</h4>
+                                <p className="text-sm text-slate-500">Certificação Profissional em Defesa de Redes.</p>
+                            </div>
+                        </li>
+                        <li className="flex gap-4">
+                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100">
+                                <Gavel size={18} className="text-slate-700" />
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-slate-900">Perito Judicial Certificado</h4>
+                                <p className="text-sm text-slate-500">Aderência estrita à ISO 27037 e cadeia de custódia.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="space-y-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+                    Igor J. S. Penha
+                </h2>
+                <div className="prose prose-slate prose-lg text-slate-500">
+                    <p>
+                        Atuando na interseção entre o Direito e a Tecnologia. Minha missão é traduzir a complexidade dos dados digitais em provas jurídicas irrefutáveis.
                     </p>
-                    <p className="text-slate-500 font-sans leading-relaxed">
-                        Pós-graduado em Inteligência Artificial, unindo a visão algorítmica moderna ao
-                        conhecimento profundo de hardware adquirido em mais de uma década de bancada.
+                    <p>
+                        Com fluência técnica internacional (Inglês Técnico ASU, Análise de Malware Russa), ofereço uma visão privilegiada sobre cibercrimes transnacionais e fraudes complexas.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-                    <div className="p-6 bg-white border border-slate-200">
-                        <span className="label-mono text-[8px] mb-2 block">Formação Superior</span>
-                        <p className="font-bold text-slate-900">Análise de Sistemas & Pós em IA</p>
-                    </div>
-                    <div className="p-6 bg-white border border-slate-200">
-                        <span className="label-mono text-[8px] mb-2 block">Metodologia</span>
-                        <p className="font-bold text-slate-900">ISO 27037 & Prof. Marcos Monteiro</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="lg:col-span-5 flex flex-col justify-center">
-                <div className="bg-slate-900 text-white p-12 space-y-10 relative overflow-hidden group">
-                    <Award className="text-slate-700 group-hover:text-slate-500 transition-colors" size={60} />
-                    <div className="relative z-10">
-                        <h4 className="text-3xl font-serif italic mb-8">Credenciais de Autoria</h4>
-                        <ul className="space-y-6 text-sm font-sans tracking-wide text-slate-300">
-                            <li className="flex gap-4 items-start">
-                                <CheckSquare size={18} className="text-white mt-1 shrink-0" />
-                                <div>
-                                    <p className="font-bold text-white mb-1">ASU TECHNICAL ENGLISH</p>
-                                    <p className="text-[10px]">Arizona State University Proficiency</p>
-                                </div>
-                            </li>
-                            <li className="flex gap-4 items-start">
-                                <CheckSquare size={18} className="text-white mt-1 shrink-0" />
-                                <div>
-                                    <p className="font-bold text-white mb-1">GOOGLE CYBERSECURITY</p>
-                                    <p className="text-[10px]">Professional Network Defense</p>
-                                </div>
-                            </li>
-                            <li className="flex gap-4 items-start">
-                                <CheckSquare size={18} className="text-white mt-1 shrink-0" />
-                                <div>
-                                    <p className="font-bold text-white mb-1">RUSSIAN ADVANCED</p>
-                                    <p className="text-[10px]">Malware Investigation Skills</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="absolute top-0 right-0 p-4 opacity-5">
-                        <Shield size={150} />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-);
-
-const ContactSection = () => (
-    <section id="contact" className="py-40 px-6 bg-white">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-1px bg-slate-200 border border-slate-200">
-            <div className="bg-white p-16 space-y-8">
-                <span className="label-mono">PROTOCOLO</span>
-                <h3 className="text-4xl font-serif font-black text-slate-900 leading-none">Canais de Engajamento</h3>
-                <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
-                    Inicie o processo de blindagem técnica imediatamente. Atendimento especializado para processos complexos.
-                </p>
-                <div className="space-y-4 text-sm font-sans font-bold text-slate-800">
-                    <div className="flex items-center gap-3">
-                        <Mail size={16} className="text-slate-400" /> igor.soares@ispforense.com.br
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <Phone size={16} className="text-slate-400" /> (61) 99528-3731
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <Globe2 size={16} className="text-slate-400" /> www.ispforense.com.br
-                    </div>
-                </div>
-            </div>
-
-            <div className="bg-slate-50 p-16 flex flex-col justify-center items-center text-center space-y-8">
-                <Shield size={40} className="text-slate-900 opacity-20" />
-                <h4 className="text-xl font-serif italic text-slate-900">Assistência Técnica Preliminar</h4>
-                <a href="mailto:igor.soares@ispforense.com.br" className="btn-legal w-full justify-center">
-                    INICIAR CHAMADA
-                </a>
-                <div className="flex gap-6 grayscale opacity-30 mt-4">
-                    <Linkedin size={20} />
-                    <Mail size={20} />
-                    <Github size={20} />
+                <div className="flex gap-4 pt-4">
+                    <a href="https://linkedin.com" target="_blank" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-blue-700 transition-colors">
+                        <Linkedin size={20} />
+                    </a>
+                    <a href="https://github.com" target="_blank" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
+                        <Github size={20} />
+                    </a>
+                    <a href="mailto:igor.soares@ispforense.com.br" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
+                        <Mail size={20} />
+                    </a>
                 </div>
             </div>
         </div>
@@ -245,14 +225,16 @@ const ContactSection = () => (
 );
 
 const Footer = () => (
-    <footer className="py-16 border-t border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-4 grayscale opacity-30">
-                <Shield size={24} />
-                <span className="font-serif font-bold italic tracking-tighter text-2xl">ISP FORENSE</span>
+    <footer className="bg-slate-50 border-t border-slate-200 py-12 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col gap-2">
+                <span className="font-bold text-slate-900 tracking-tight">ISP FORENSE</span>
+                <p className="text-xs text-slate-400">© 2026 Igor J. S. Penha. Todos os direitos reservados.</p>
             </div>
-            <div className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.3em]">
-                © 2026 | SOBERANIA TÉCNICA EM PROVA DIGITAL
+            <div className="flex gap-8 text-xs font-medium text-slate-500">
+                <a href="#" className="hover:text-slate-900">Termos de Uso</a>
+                <a href="#" className="hover:text-slate-900">Privacidade</a>
+                <a href="#contact" className="hover:text-slate-900">Contato</a>
             </div>
         </div>
     </footer>
@@ -260,12 +242,11 @@ const Footer = () => (
 
 export default function Home() {
     return (
-        <main className="selection:bg-slate-900 selection:text-white">
+        <main className="min-h-screen bg-white">
             <Header />
             <Hero />
             <ExpertiseSection />
             <BioSection />
-            <ContactSection />
             <Footer />
         </main>
     );

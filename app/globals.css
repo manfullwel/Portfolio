@@ -3,69 +3,70 @@
 @tailwind utilities;
 
 :root {
-  --background: 248, 250, 252;
-  /* slate-50 */
-  --foreground: 15, 23, 42;
-  /* slate-900 */
-  --primary: 30, 41, 59;
-  /* slate-800 - Institucional */
-  --accent: 37, 99, 235;
-  /* Blue-600 */
+  /* Cold Sovereignty Palette */
+  --foreground-rgb: 30, 41, 59; /* Slate 800 - Deep, legible text */
+  --background-start-rgb: 255, 255, 255; /* Pure White */
+  --background-end-rgb: 245, 247, 250; /* Ice Gray - Subtle depth */
+  
+  --primary-rgb: 15, 23, 42; /* Slate 900 - Strong headers */
+  --accent-rgb: 37, 99, 235; /* Royal Blue - Action/Links */
+  --muted-rgb: 100, 116, 139; /* Slate 500 - Secondary text */
+  
+  --glass-border: 226, 232, 240; /* Slate 200 */
 }
 
-@layer base {
-  body {
-    @apply bg-slate-50 text-slate-900;
+@media (prefers-color-scheme: dark) {
+  /* Optional Dark Mode Support - Keeping it subtle/professional rather than pitch black */
+  :root {
+    --foreground-rgb: 241, 245, 249;
+    --background-start-rgb: 15, 23, 42; 
+    --background-end-rgb: 2, 6, 23;
+    
+    --primary-rgb: 255, 255, 255;
+    --accent-rgb: 56, 189, 248;
+    --muted-rgb: 148, 163, 184;
+    
+    --glass-border: 51, 65, 85;
   }
+}
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-serif;
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
-}
-
-/* --- Institutional Legal Design --- */
-
-.report-panel {
-  @apply bg-white border border-slate-200 shadow-sm rounded-none md:rounded-lg;
-}
-
-.report-card {
-  @apply bg-white border-l-4 border-slate-800 p-8 shadow-sm transition-all hover:shadow-md;
-}
-
-.heading-judicial {
-  @apply text-slate-900 font-serif font-black tracking-tight;
-}
-
-.text-formal {
-  @apply leading-relaxed text-slate-700 font-sans;
-}
-
-.label-mono {
-  @apply font-mono text-[10px] uppercase tracking-widest text-slate-400 font-bold;
-}
-
-/* UI Elements */
-.btn-legal {
-  @apply inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-bold rounded-sm hover:bg-slate-800 transition-colors uppercase text-xs tracking-widest;
-}
-
-section {
-  @apply py-20 px-6 max-w-5xl mx-auto;
-}
-
-/* Custom Scrollbar - Hidden/Thin to look like a document */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-slate-200;
+  
+  /* Apple-style Glassmorphism */
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-xl border border-slate-200/60 shadow-sm;
+  }
+  
+  /* Clean Typography Utilities */
+  .heading-hero {
+    @apply font-bold tracking-tight text-slate-900;
+  }
+  
+  .text-secondary {
+    @apply text-slate-500 font-normal leading-relaxed;
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg bg-slate-900 text-white font-medium hover:bg-slate-800 transition-all active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-all active:scale-95;
+  }
 }
