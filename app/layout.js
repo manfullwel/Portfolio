@@ -15,8 +15,16 @@ const merriweather = Merriweather({
 });
 
 export const metadata = {
-    title: 'Igor J. S. Penha | Perito Judicial em Computação Forense',
-    description: 'Laudos periciais, auditoria de IA e perícia mobile com rigor jurídico e soberania técnica.',
+    title: 'Igor Penha | Perito Judicial em Computação Forense e IA - Brasil',
+    description: 'Perito Judicial especializado em Fraudes Bancárias, Deepfakes e Cadeia de Custódia (ISO 27037). Laudos técnicos com validade jurídica.',
+    openGraph: {
+        title: 'Igor Penha | Perito Judicial Forense',
+        description: 'Auditoria de Fraudes, Deepfakes e Recuperação de Hardware. Atuação Nacional.',
+        url: 'https://ispforense.com.br',
+        siteName: 'ISP Forense',
+        locale: 'pt_BR',
+        type: 'website',
+    },
     manifest: '/manifest.json',
 };
 

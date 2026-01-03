@@ -6,7 +6,7 @@ import {
     Shield, Smartphone, Cpu, Search,
     CheckSquare, Mail, Link as LinkIcon,
     ArrowRight, Gavel, Award, Linkedin, Github,
-    FileText, Lock, X, Globe2
+    FileText, Lock, X, Globe2, BookOpen, UserCheck, Server
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -25,8 +25,8 @@ const Header = () => (
             </div>
             <nav className="hidden md:flex gap-8 text-[13px] font-medium text-slate-500">
                 <a href="#expertise" className="hover:text-slate-900 transition-colors">Especialidades</a>
+                <a href="#technical-notes" className="hover:text-slate-900 transition-colors">Notas Técnicas</a>
                 <a href="#bio" className="hover:text-slate-900 transition-colors">Credenciais</a>
-                <a href="#contact" className="hover:text-slate-900 transition-colors">Contato</a>
             </nav>
             <a href="mailto:peritoigor@ispforense.com.br" className="px-4 py-2 bg-slate-900 text-white text-[12px] font-semibold rounded-full hover:bg-slate-800 transition-colors">
                 Solicitar Parecer
@@ -251,12 +251,66 @@ const ExpertiseSection = () => {
     );
 };
 
+/* --- TECHNICAL NOTES SECTION (Mini-Blog) --- */
+const TechnicalNotes = () => {
+    const notes = [
+        {
+            date: "Mai/2024",
+            title: "Análise de Vulnerabilidade MFA (Auth)",
+            desc: "Relatório técnico sobre bypass de autenticação multifator em ambientes bancários legados. Demonstração de interceptação de tokens via SIM Swap.",
+            tag: "Lab Report"
+        },
+        {
+            date: "Abr/2024",
+            title: "Extração de Dados em iOS 17 (Checkm8)",
+            desc: "Estudo sobre limitações da extração lógica vs. física em dispositivos Apple recentes. Uso de exploits nível hardware para contornar bloqueios.",
+            tag: "Mobile Forensics"
+        },
+        {
+            date: "Mar/2024",
+            title: "Detecção de Deepvoice em WhatsApp",
+            desc: "Metodologia para identificar áudios clonados por IA em casos de estelionato via mensageiros. Análise de espectrograma de frequência.",
+            tag: "AI Research"
+        }
+    ];
+
+    return (
+        <section id="technical-notes" className="py-24 px-6 bg-white border-t border-slate-100">
+            <div className="max-w-4xl mx-auto">
+                <div className="mb-12 flex items-center gap-4">
+                    <BookOpen className="text-blue-900" size={28} />
+                    <h2 className="text-3xl font-serif font-bold text-slate-900">Notas Técnicas Recentes</h2>
+                </div>
+
+                <div className="space-y-6">
+                    {notes.map((note, i) => (
+                        <div key={i} className="flex flex-col md:flex-row gap-6 p-6 rounded-xl border border-slate-100 hover:border-blue-100 hover:bg-slate-50 transition-colors">
+                            <div className="shrink-0 flex md:flex-col items-center md:items-start gap-2">
+                                <span className="text-sm font-bold text-blue-900/80 bg-blue-50 px-3 py-1 rounded-full">{note.date}</span>
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-slate-900 mb-2">{note.title}</h3>
+                                <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                                    {note.desc}
+                                </p>
+                                <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
+                                    {note.tag}
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 const BioSection = () => (
-    <section id="bio" className="py-24 px-6 bg-white overflow-hidden">
+    <section id="bio" className="py-24 px-6 bg-slate-50 overflow-hidden"> {/* Changed bg to slate-50 for contrast with Tech Notes */}
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
-                <div className="absolute -inset-4 bg-slate-100 rounded-full opacity-50 blur-3xl"></div>
-                <div className="relative glass-panel p-10 rounded-2xl border border-slate-200">
+                <div className="absolute -inset-4 bg-white rounded-full opacity-50 blur-3xl"></div>
+                <div className="relative glass-panel p-10 rounded-2xl border border-slate-200 bg-white">
                     <h3 className="text-2xl font-serif font-bold text-slate-900 mb-6">Credenciais Acadêmicas</h3>
                     <ul className="space-y-6">
                         <li className="flex gap-4">
@@ -277,15 +331,6 @@ const BioSection = () => (
                                 <p className="text-sm text-slate-500">Certificação Profissional em Defesa de Redes.</p>
                             </div>
                         </li>
-                        <li className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100">
-                                <Gavel size={18} className="text-slate-700" />
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-slate-900">Perito Judicial Certificado</h4>
-                                <p className="text-sm text-slate-500">Conformidade ISO 27037 e Cadeia de Custódia.</p>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -296,23 +341,23 @@ const BioSection = () => (
                 </h2>
                 <div className="prose prose-slate prose-lg text-slate-500">
                     <p className="font-medium text-slate-800">
-                        Minha expertise não começou nos softwares automatizados, mas na bancada de eletrônica.
+                        10+ Anos de Arquitetura de Hardware Mobile e Eletrônica de Precisão.
                     </p>
                     <p>
-                        Com início na manutenção de dispositivos legados (arquitetura Nokia e Sony Ericsson), desenvolvi uma capacidade singular de extração física (Chip-off) e recuperação de dados em hardware danificado, onde peritos limitados a software não conseguem atuar.
+                        Minha trajetória não começou apenas com softwares, mas na bancada de manutenção de dispositivos legados (Nokia/Sony Ericsson). Essa vivência me conferiu capacidade única de <strong>Recuperação de Dados via Chip-off</strong>.
                     </p>
                     <p>
-                        Hoje, uno essa materialidade do hardware à auditoria de Inteligência Artificial, oferecendo uma visão completa da prova digital para o tribunal.
+                        Atuo também como <strong>Auditor de Fraudes Bancárias (Backoffice Check)</strong>, conhecendo profundamente a engenharia social e os fluxos financeiros internos, garantindo a produção de prova pericial robusta.
                     </p>
                 </div>
                 <div className="flex gap-4 pt-4">
-                    <a href="https://linkedin.com" target="_blank" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-blue-700 transition-colors">
+                    <a href="https://linkedin.com" target="_blank" className="p-3 rounded-full bg-white text-slate-600 hover:bg-slate-100 hover:text-blue-700 transition-colors border border-slate-200">
                         <Linkedin size={20} />
                     </a>
-                    <a href="https://github.com" target="_blank" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
+                    <a href="https://github.com" target="_blank" className="p-3 rounded-full bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors border border-slate-200">
                         <Github size={20} />
                     </a>
-                    <a href="mailto:peritoigor@ispforense.com.br" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
+                    <a href="mailto:peritoigor@ispforense.com.br" className="p-3 rounded-full bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors border border-slate-200">
                         <Mail size={20} />
                     </a>
                 </div>
@@ -322,7 +367,7 @@ const BioSection = () => (
 );
 
 const InternationalFooter = () => (
-    <div className="bg-slate-50 border-t border-slate-200 py-16 px-6">
+    <div className="bg-white border-t border-slate-200 py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
             <h3 className="font-serif font-bold text-2xl text-slate-900 mb-10 flex items-center justify-center gap-3">
                 <Globe2 className="text-blue-900" /> Capacidade de Análise Global
@@ -349,17 +394,44 @@ const InternationalFooter = () => (
     </div>
 );
 
-const Footer = () => (
-    <footer className="bg-white border-t border-slate-100 py-12 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+const TrustFooter = () => (
+    <footer className="bg-slate-900 text-slate-400 py-12 px-6 border-t border-slate-800 relative overflow-hidden">
+        {/* FAB WhatsApp */}
+        <a
+            href="https://wa.me/5561999999999" // Replace with actual number
+            target="_blank"
+            className="fixed bottom-6 right-6 z-[200] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center"
+            title="Fale no WhatsApp"
+        >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
             <div className="flex flex-col gap-2">
-                <span className="font-bold text-slate-900 tracking-tight">ISP FORENSE</span>
-                <p className="text-xs text-slate-400">© 2026 Igor J. S. Penha. Todos os direitos reservados.</p>
+                <span className="font-bold text-white tracking-tight text-lg">ISP FORENSE</span>
+                <p className="text-xs text-slate-500">
+                    © 2026 Igor J. S. Penha. Perito Judicial nomeado.
+                </p>
             </div>
-            <div className="flex gap-8 text-xs font-medium text-slate-500">
-                <a href="#" className="hover:text-slate-900">Termos de Uso</a>
-                <a href="#" className="hover:text-slate-900">Privacidade</a>
-                <a href="#contact" className="hover:text-slate-900">Contato</a>
+
+            <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex gap-4">
+                    <div className="flex items-center gap-2 px-3 py-1 bg-slate-800 rounded-full border border-slate-700">
+                        <Lock size={12} className="text-green-500" />
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-300">Conformidade LGPD</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-3 py-1 bg-slate-800 rounded-full border border-slate-700">
+                        <Server size={12} className="text-blue-500" />
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-300">Serverless Security</span>
+                    </div>
+                </div>
+
+                <div className="flex gap-6 text-xs font-medium text-slate-500">
+                    <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
+                    <a href="#" className="hover:text-white transition-colors">Privacidade</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -371,9 +443,10 @@ export default function Home() {
             <Header />
             <Hero />
             <ExpertiseSection />
+            <TechnicalNotes />
             <BioSection />
             <InternationalFooter />
-            <Footer />
+            <TrustFooter />
         </main>
     );
 }
