@@ -18,6 +18,28 @@ export async function generateMetadata({ params }) {
     return {
         title: `${postData.title} | Igor Penha Forense`,
         description: postData.description,
+        openGraph: {
+            title: postData.title,
+            description: postData.description,
+            url: `https://ispforense.com.br/blog/${slug}`,
+            type: 'article',
+            publishedTime: postData.date,
+            authors: ['Igor Penha'],
+            images: [
+                {
+                    url: postData.image || '/image/profile.png', // Fallback to profile
+                    width: 1200,
+                    height: 630,
+                    alt: postData.title,
+                }
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: postData.title,
+            description: postData.description,
+            images: [postData.image || '/image/profile.png'],
+        },
     }
 }
 

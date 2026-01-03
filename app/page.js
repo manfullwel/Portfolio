@@ -277,7 +277,7 @@ export default function Home() {
                     </div>
                     <div className="text-right">
                         <h5 className="text-white font-serif mb-4">Contato Oficial</h5>
-                        <p>Salvador/BA - Atuação Nacional</p>
+                        <p>Brasília/DF - Atuação Nacional</p>
                         <p className="text-xs mt-1 text-blue-300">peritoigor@ispforense.com.br</p>
                     </div>
                 </div>
