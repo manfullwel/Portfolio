@@ -85,20 +85,24 @@ const Hero = () => (
                 </div>
             </motion.div>
 
-            {/* Right Column: Hero Image - Corrected Path and improved display */}
+            {/* Right Column: Hero Image - Optimized for Stability & Scale */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
-                className="relative order-1 lg:order-2 h-[500px] lg:h-[700px] w-full bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 shadow-sm"
+                className="relative order-1 lg:order-2 flex justify-center lg:justify-end"
             >
-                <Image
-                    src="/image/profile.png"
-                    alt="Igor Penha - Perito Judicial"
-                    fill
-                    priority
-                    className="object-cover object-center hover:scale-105 transition-transform duration-1000"
-                />
+                <div className="relative w-full max-w-[380px] aspect-[3/4] rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/50 bg-slate-50">
+                    <Image
+                        src="/image/profile.png"
+                        alt="Igor Penha - Perito Judicial"
+                        fill
+                        priority
+                        quality={90}
+                        sizes="(max-width: 768px) 100vw, 380px"
+                        className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                    />
+                </div>
             </motion.div>
         </div>
     </section>
