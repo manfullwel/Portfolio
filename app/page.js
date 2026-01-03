@@ -28,7 +28,7 @@ const Header = () => (
                 <a href="#bio" className="hover:text-slate-900 transition-colors">Credenciais</a>
                 <a href="#contact" className="hover:text-slate-900 transition-colors">Contato</a>
             </nav>
-            <a href="#contact" className="px-4 py-2 bg-slate-900 text-white text-[12px] font-semibold rounded-full hover:bg-slate-800 transition-colors">
+            <a href="mailto:peritoigor@ispforense.com.br" className="px-4 py-2 bg-slate-900 text-white text-[12px] font-semibold rounded-full hover:bg-slate-800 transition-colors">
                 Solicitar Parecer
             </a>
         </div>
@@ -61,7 +61,7 @@ const Hero = () => (
                 </p>
 
                 <div className="flex flex-wrap gap-4 pt-2">
-                    <a href="#contact" className="btn-primary">
+                    <a href="mailto:peritoigor@ispforense.com.br" className="btn-primary">
                         Iniciar Atendimento <ArrowRight size={16} className="ml-2" />
                     </a>
                     <a href="#expertise" className="btn-outline">
@@ -308,7 +308,7 @@ const BioSection = () => (
                     <a href="https://github.com" target="_blank" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
                         <Github size={20} />
                     </a>
-                    <a href="mailto:igor.soares@ispforense.com.br" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
+                    <a href="mailto:peritoigor@ispforense.com.br" className="p-3 rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
                         <Mail size={20} />
                     </a>
                 </div>
