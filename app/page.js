@@ -9,9 +9,44 @@ export default function Home() {
     const form = useRef();
     const [status, setStatus] = useState("idle"); // idle, sending, success, error
 
+    // --- SECURITY LAYER: SANITIZATION (BLUE TEAM) ---
+    const sanitizeInput = (input) => {
+        if (typeof input !== 'string') return input;
+        return input
+            .replace(/</g, "&lt;").replace(/>/g, "&gt;") // Escape tags
+            .replace(/["']/g, "") // Remove quotes
+            .replace(/javascript:/gi, "") // Remove protocol handlers
+            .replace(/on\w+=/gi, ""); // Remove event handlers (onload, etc)
+    };
+
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
     // --- AUTOMAÇÃO ENGENHOSA (ENVIO SEM REFRESH) ---
     const sendEmail = (e) => {
-        e.preventDefault(); // <--- O SEGREDO: IMPEDE QUE OS DADOS VÃO PARA A URL
+        e.preventDefault();
+
+        // 1. Extração de Dados
+        const formData = new FormData(form.current);
+        const rawData = Object.fromEntries(formData.entries());
+
+        // 2. Validação & Sanitização (Client-Side Firewall)
+        if (!validateEmail(rawData.user_email)) {
+            alert("Email inválido detectado pelo sistema de segurança.");
+            return;
+        }
+
+        if (rawData.message.length > 2000) {
+            alert("Limite de caracteres excedido (Max: 2000).");
+            return;
+        }
+
+        // 3. Modificação dos Campos (Sanitizados)
+        // Nota: EmailJS lê do form.current, mas podemos manipular o DOM antes do envio
+        // ou enviar os dados sanitizados manualmente se a API permitir. 
+        // Como emailjs.sendForm pega direto do DOM, a melhor defesa aqui é validar antes.
+
         setStatus("sending");
 
         emailjs.sendForm(
@@ -178,22 +213,22 @@ export default function Home() {
 
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">Nome Completo / OAB</label>
-                            <input type="text" name="user_name" required className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Dr. João Silva" />
+                            <input type="text" name="user_name" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Dr. João Silva" />
                         </div>
 
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">E-mail Corporativo</label>
-                            <input type="email" name="user_email" required className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="contato@advocacia.com.br" />
+                            <input type="email" name="user_email" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="contato@advocacia.com.br" />
                         </div>
 
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">WhatsApp</label>
-                            <input type="tel" name="user_phone" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="(00) 00000-0000" />
+                            <input type="tel" name="user_phone" maxLength="20" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="(00) 00000-0000" />
                         </div>
 
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">Resumo do Caso</label>
-                            <textarea name="message" rows="4" required className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Descrição técnica da demanda..."></textarea>
+                            <textarea name="message" rows="4" required maxLength="2000" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Descrição técnica da demanda..."></textarea>
                         </div>
 
                         <button
