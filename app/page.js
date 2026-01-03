@@ -94,14 +94,16 @@ const Hero = () => (
                 transition={{ duration: 0.8 }}
                 className="relative order-1 lg:order-2 flex justify-center lg:justify-end"
             >
-                <div className="relative w-full max-w-[380px] aspect-[3/4] rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/50 bg-slate-50">
+                <div className="relative w-full max-w-[380px] rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/50 bg-slate-50">
                     <Image
                         src="/image/profile.png"
                         alt="Igor Penha - Perito Judicial"
-                        fill
+                        width={400}
+                        height={550}
                         priority
                         quality={90}
                         sizes="(max-width: 768px) 100vw, 380px"
+                        style={{ width: '100%', height: 'auto' }}
                         className="object-cover object-top hover:scale-105 transition-transform duration-700"
                     />
                 </div>
