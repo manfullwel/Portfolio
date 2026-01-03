@@ -1,10 +1,40 @@
-'use client';
-
 import Image from "next/image";
 import Link from "next/link";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaLock, FaShieldAlt, FaBalanceScale, FaMicrochip, FaChartLine, FaCheckCircle, FaServer } from 'react-icons/fa';
+import { getSortedPostsData } from '../lib/posts';
+
+export const metadata = {
+    title: 'Igor Penha | Perito Judicial em Computação Forense & IA',
+    description: 'Perito Judicial especializado em Fraudes Bancárias, Detecção de Deepfakes e Hardware Mobile (Chip-off). Laudos técnicos com validade jurídica e conformidade ISO 27037 e LGPD.',
+    metadataBase: new URL('https://ispforense.com.br'),
+    openGraph: {
+        title: 'Igor Penha - Perito Judicial Forense',
+        description: 'Auditoria de Deepfakes, Fraudes Financeiras e Recuperação de Hardware (Nokia/Sony Legacy).',
+        url: 'https://ispforense.com.br',
+        siteName: 'Igor Penha Forense',
+        locale: 'pt_BR',
+        type: 'website',
+        images: [
+            {
+                url: '/image/profile.png',
+                width: 800,
+                height: 600,
+                alt: 'Igor Penha Perito Judicial',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Igor Penha | Perito Judicial Forense',
+        description: 'Auditoria de Deepfakes e Fraudes Bancárias.',
+        images: ['/image/profile.png'],
+    },
+    manifest: '/manifest.json',
+};
 
 export default function Home() {
+    const allPostsData = getSortedPostsData().slice(0, 3);
+
     return (
         <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-200">
 
@@ -143,44 +173,34 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* --- SEÇÃO 3: NOTAS TÉCNICAS (Thought Leadership) --- */}
+            {/* --- SEÇÃO 3: NOTAS TÉCNICAS (Dynamic Blog) --- */}
             <section className="py-16 px-6 max-w-7xl mx-auto">
                 <div className="flex justify-between items-end mb-8">
                     <div>
                         <h3 className="text-3xl font-serif text-blue-900">Artigos Técnicos Recentes</h3>
                         <p className="text-slate-600 text-sm mt-1">Thought Leadership em Cibersegurança Forense</p>
                     </div>
-                    <Link href="https://github.com/manfullwel" target="_blank" className="text-blue-900 font-semibold hover:underline text-sm hidden md:block">
-                        Ver GitHub Completo →
+                    <Link href="/blog" className="text-blue-900 font-semibold hover:underline text-sm hidden md:block">
+                        Ver Todos os Artigos →
                     </Link>
                 </div>
 
                 <div className="space-y-4">
-                    {/* Artigo 1 */}
-                    <div className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer">
-                        <div className="md:w-32 text-xs font-mono text-slate-400 mt-1 uppercase tracking-widest">Publicação 2025</div>
-                        <div>
-                            <h5 className="font-bold text-slate-800 group-hover:text-blue-900 flex items-center gap-2">
-                                O Impacto dos Deepfakes em Provas Trabalhistas <FaCheckCircle className="text-blue-500 text-xs" />
-                            </h5>
-                            <p className="text-sm text-slate-600 mt-1">
-                                Análise jurídica e técnica sobre a admissibilidade de áudios gerados por IA como prova em tribunais brasileiros.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Artigo 2 */}
-                    <div className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer">
-                        <div className="md:w-32 text-xs font-mono text-slate-400 mt-1 uppercase tracking-widest">Tech Paper</div>
-                        <div>
-                            <h5 className="font-bold text-slate-800 group-hover:text-blue-900 flex items-center gap-2">
-                                Cadeia de Custódia em Nuvens AWS: Desafios da ISO 27037 <FaServer className="text-slate-400 text-xs" />
-                            </h5>
-                            <p className="text-sm text-slate-600 mt-1">
-                                Metodologia para preservação de logs voláteis em ambientes serverless e contêineres Docker auditados.
-                            </p>
-                        </div>
-                    </div>
+                    {allPostsData.map(({ id, date, title, description }) => (
+                        <Link href={`/blog/${id}`} key={id}>
+                            <div className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer mb-4">
+                                <div className="md:w-32 text-xs font-mono text-slate-400 mt-1 uppercase tracking-widest">{date}</div>
+                                <div>
+                                    <h5 className="font-bold text-slate-800 group-hover:text-blue-900 flex items-center gap-2">
+                                        {title}
+                                    </h5>
+                                    <p className="text-sm text-slate-600 mt-1">
+                                        {description}
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </section>
 

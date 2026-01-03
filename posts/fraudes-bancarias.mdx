@@ -1,0 +1,41 @@
+---
+title: 'Anatomia da Fraude Bancária: Quando o Boleto é Falso, mas o Log não Mentem'
+date: '2025-04-10'
+description: 'Como a análise de logs de servidor e engenharia reversa de malware desmascara quadrilhas de estelionato digital.'
+tags: ['Fraude Bancária', 'Malware', 'Engenharia Social']
+image: '/image/code-audit.png'
+---
+
+## Introdução: O Golpe do "Boleto Reescrito"
+
+Um dos crimes mais comuns no Brasil envolve a interceptação de tráfego ou a infecção de endpoint para alterar a "Linha Digitável" de um boleto. O usuário vê o logo do banco A, mas o código de barras direciona o dinheiro para a conta de um laranja no banco B.
+
+Como Perito Judicial, minha missão é responder: *A culpa foi do banco (falha de segurança) ou do usuário (falta de cautela)?*
+
+## O Rastro Digital (Log Analysis)
+
+Em um caso recente envolvendo uma empresa de logística que perdeu R$ 400.000,00, a defesa do banco alegava que a transação foi autenticada com Token e Senha. Logo, seria culpa da empresa.
+
+Minha perícia técnica focou não na transação em si, mas no **ambiente da vítima**. Ao analisar os logs do servidor de e-mail e as estações de trabalho do financeiro, encontrei:
+
+1.  **A Infecção (Malware)**: Um arquivo chamado `fatura_atrasada.pdf.exe` foi executado 4 dias antes da fraude.
+2.  **A Persistência**: O malware criou uma regra no navegador que monitorava strings como "Boleto" ou "Pagamento".
+3.  **A Injeção (Man-in-the-Browser)**: No momento em que o funcionário abria o PDF legítimo, o malware sobrepunha uma camada HTML invisível com o código de barras alterado.
+
+## Engenharia Reversa do "Loader"
+
+Utilizando ferramentas de *Sandboxing*, izolei o artefato malicioso. A análise do código revelou que ele se comunicava com um IP hospedado no Leste Europeu (Rússia), enviando prints da tela da vítima a cada 5 segundos.
+
+> **Achado Pericial**: O malware possuía um certificado digital roubado de uma empresa legítima, o que burlou o antivírus simples instalado na máquina.
+
+## Diferença entre Fraude Interna e Externa
+
+Muitas vezes, a suspeita recai sobre funcionários. A perícia de logs é crucial para exculpar inocentes.
+*   **Fraude Interna**: Geralmente deixa rastros de acesso privilegiado (ex: alteração de cadastro de fornecedor no ERP).
+*   **Fraude Externa (Cibercrime)**: Deixa rastros de conexão remota (RDP, TeamViewer não autorizado) ou exfiltração de dados via DNS.
+
+## Conclusão
+
+A materialidade da fraude bancária exige ir além do extrato. É preciso auditar o *endpoint*, a rede e o comportamento do usuário. Para advogados, o quesito crucial é: *"Houve falha no mecanismo de segurança do Internet Banking que permitiu a injeção de código malicioso?"*
+
+Se o banco não detectou a anomalia de um IP russo acessando uma conta brasileira às 3 da manhã, a tese de "Falha na Prestação do Serviço" ganha força robusta.

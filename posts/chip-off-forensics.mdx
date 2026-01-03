@@ -1,0 +1,42 @@
+---
+title: 'Chip-Off Forensics: A Última Fronteira da Recuperação de Dados'
+date: '2025-03-22'
+description: 'Quando o software falha: a técnica de desoldar chips de memória para extração física de evidências em dispositivos destruídos.'
+tags: ['Hardware', 'Chip-off', 'Mobile Forensics']
+image: '/image/hardware-lab.png'
+---
+
+## O Limite do Software
+
+Ferramentas como Cellebrite e Magnet Forensics são excelentes para extrações lógicas e "File System". Mas o que acontece quando:
+1.  O celular foi atirado contra a parede pelo suspeito?
+2.  O dispositivo caiu na água (oxidação severa)?
+3.  A senha de bloqueio é desconhecida e o USB está danificado?
+
+É aqui que termina a "informática" e começa a **Eletrônica Forense**.
+
+## A Técnica Chip-Off
+
+Minha especialização em hardware (10+ anos) me permite atuar na camada física. O processo de Chip-off consiste em remover o chip de memória Flash (eMMC, UFS) da placa-mãe do dispositivo para lê-lo diretamente em um leitor especial.
+
+### Passo a Passo do Procedimento:
+
+1.  **Desmontagem e Limpeza**: Remoção de blindagens metálicas.
+2.  **Dessoldagem Térmica**: Uso de estação de ar quente (com perfil térmico preciso para não queimar o silício) para liquifazer as esferas de solda (BGA) sob o chip.
+3.  **Reballing**: Limpeza dos contatos do chip e aplicação de novas esferas de solda microscópicas.
+4.  **Leitura Binária (Raw Image)**: O chip é inserido em um *socket* programador profisional que gera uma imagem bruta ("dump") de cada zero e um armazenado.
+
+## O Desafio da Criptografia Moderna
+
+Em dispositivos antigos (Nokia, Sony Ericsson, Androids pré-6.0), o Chip-off resultava em acesso imediato aos arquivos.
+Em iPhones e Androids modernos, os dados são criptografados por padrão.
+
+> **Então, para que serve o Chip-off hoje?**
+> Serve para **salvar a imagem física**. Mesmo criptografada, a imagem física preserva o "estado" do aparelho. Com a imagem em mãos, podemos usar clusters de GPU para tentar quebrar a senha (Brute Force) sem o risco de travar o aparelho original por "tentativas excessivas", pois estamos atacando uma cópia virtual.
+
+## Caso Prático: O Celular no Incêndio
+
+Atuei em um caso de incêndio criminoso onde um Samsung antigo (Android 5) foi encontrado parcialmente derretido. A porta USB não existia mais. A placa estava em curto.
+Via Chip-off, removi a memória eMMC. A leitura foi 100% bem sucedida. Recuperei mensagens de SMS que provavam a autoria do incêndio, geolocalizando o suspeito na cena do crime.
+
+A "morte" do aparelho não significa a morte da prova. É uma questão de saber ouvir o silício.
