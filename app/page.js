@@ -5,22 +5,33 @@ import emailjs from '@emailjs/browser'; // A Ferramenta de Automação
 import Link from 'next/link';
 import { FaWhatsapp, FaShieldAlt, FaBalanceScale, FaMicrochip, FaLock, FaGlobeAmericas, FaCheckCircle } from 'react-icons/fa';
 
+import DOMPurify from 'dompurify'; // Blue Team Sanitization
+
 export default function Home() {
     const form = useRef();
     const [status, setStatus] = useState("idle"); // idle, sending, success, error
+    const [lgpdConsent, setLgpdConsent] = useState(false);
 
     // --- SECURITY LAYER: SANITIZATION (BLUE TEAM) ---
     const sanitizeInput = (input) => {
         if (typeof input !== 'string') return input;
-        return input
-            .replace(/</g, "&lt;").replace(/>/g, "&gt;") // Escape tags
-            .replace(/["']/g, "") // Remove quotes
-            .replace(/javascript:/gi, "") // Remove protocol handlers
-            .replace(/on\w+=/gi, ""); // Remove event handlers (onload, etc)
+        return DOMPurify.sanitize(input, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
     };
 
     const validateEmail = (email) => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    // --- PHONE MASK (+55) ---
+    const handlePhoneChange = (e) => {
+        let value = e.target.value.replace(/\D/g, ""); // Remove non-digits
+        if (value.length > 11) value = value.slice(0, 11);
+
+        // Auto-format: (XX) XXXXX-XXXX
+        if (value.length > 2) value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+        if (value.length > 9) value = `${value.slice(0, 10)}-${value.slice(10)}`;
+
+        e.target.value = value;
     };
 
     // --- AUTOMAÇÃO ENGENHOSA (ENVIO SEM REFRESH) ---
@@ -37,15 +48,23 @@ export default function Home() {
             return;
         }
 
+        if (!lgpdConsent) {
+            alert("É necessário aceitar os termos de confidencialidade (LGPD) para prosseguir.");
+            return;
+        }
+
         if (rawData.message.length > 2000) {
             alert("Limite de caracteres excedido (Max: 2000).");
             return;
         }
 
-        // 3. Modificação dos Campos (Sanitizados)
-        // Nota: EmailJS lê do form.current, mas podemos manipular o DOM antes do envio
-        // ou enviar os dados sanitizados manualmente se a API permitir. 
-        // Como emailjs.sendForm pega direto do DOM, a melhor defesa aqui é validar antes.
+        // 3. Sanitização Robusta via DOMPurify
+        // Nota: EmailJS pega do formulário HTML direto, então atualizamos os valores nos inputs antes do disparo
+        // (Isso é um 'hack' necessário sem backend intermediário)
+        if (form.current) {
+            form.current.user_name.value = sanitizeInput(rawData.user_name);
+            form.current.message.value = sanitizeInput(rawData.message);
+        }
 
         setStatus("sending");
 
@@ -203,32 +222,63 @@ export default function Home() {
             {/* --- FORMULÁRIO BLINDADO (EMAILJS) --- */}
             <section id="contato" className="py-16 px-6 bg-slate-100">
                 <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-xl border-t-4 border-blue-900">
-                    <h3 className="text-2xl font-serif text-blue-900 mb-2 text-center">Solicitar Análise Pericial</h3>
-                    <p className="text-center text-slate-500 mb-8 text-sm">Canal criptografado (TLS) para Advogados e Magistrados.</p>
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                        <FaLock className="text-blue-900" />
+                        <h3 className="text-2xl font-serif text-blue-900 text-center">Solicitar Análise Pericial</h3>
+                    </div>
+                    <p className="text-center text-slate-500 mb-8 text-sm">Canal criptografado (TLS 1.3) para Advogados e Magistrados.</p>
 
                     <form ref={form} onSubmit={sendEmail} className="space-y-5">
 
-                        {/* Input Oculto para Spam (Honeypot) - Mantido escondido */}
+                        {/* Input Oculto para Spam (Honeypot) */}
                         <input type="text" name="honeypot" className="hidden" tabIndex="-1" autoComplete="off" />
 
+                        {/* Nome */}
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">Nome Completo / OAB</label>
                             <input type="text" name="user_name" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Dr. João Silva" />
                         </div>
 
+                        {/* Email */}
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">E-mail Corporativo</label>
                             <input type="email" name="user_email" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="contato@advocacia.com.br" />
                         </div>
 
+                        {/* WhatsApp com Mask */}
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-1">WhatsApp</label>
-                            <input type="tel" name="user_phone" maxLength="20" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="(00) 00000-0000" />
+                            <label className="block text-sm font-bold text-slate-700 mb-1">WhatsApp (DDD + Número)</label>
+                            <div className="relative">
+                                <span className="absolute left-3 top-3 text-slate-400 font-bold select-none">+55</span>
+                                <input
+                                    type="tel"
+                                    name="user_phone"
+                                    maxLength="15"
+                                    className="w-full p-3 pl-12 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md"
+                                    placeholder="(00) 00000-0000"
+                                    onChange={handlePhoneChange}
+                                />
+                            </div>
                         </div>
 
+                        {/* Mensagem */}
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">Resumo do Caso</label>
                             <textarea name="message" rows="4" required maxLength="2000" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Descrição técnica da demanda..."></textarea>
+                        </div>
+
+                        {/* LGPD Checkbox */}
+                        <div className="flex items-start gap-3 p-4 bg-slate-50 rounded border border-slate-100">
+                            <input
+                                type="checkbox"
+                                id="lgpd_consent"
+                                checked={lgpdConsent}
+                                onChange={(e) => setLgpdConsent(e.target.checked)}
+                                className="mt-1 w-4 h-4 text-blue-900 rounded border-slate-300 focus:ring-blue-900"
+                            />
+                            <label htmlFor="lgpd_consent" className="text-xs text-slate-500 leading-relaxed cursor-pointer select-none">
+                                Autorizo o tratamento destes dados exclusivamente para fins de <strong>parecer técnico preliminar</strong>, em conformidade com a <strong>Lei Geral de Proteção de Dados (13.709/2018)</strong>. Entendo que esta comunicação é protegida por sigilo pericial.
+                            </label>
                         </div>
 
                         <button
