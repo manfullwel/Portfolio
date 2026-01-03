@@ -20,13 +20,13 @@ export default function Home() {
                     <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
                         <span className="text-4xl">✓</span>
                     </div>
-                    <h1 className="text-3xl font-serif text-blue-900 mb-4 font-bold">Protocolo Recebido</h1>
-                    <p className="text-slate-600 mb-8 leading-relaxed">
-                        Sua solicitação foi criptografada e encaminhada diretamente ao Perito.
-                        <br /><span className="text-sm text-slate-400 mt-2 block">(Notificação de segurança enviada ao analista)</span>
+                    <h1 className="text-3xl font-serif text-blue-900 mb-4 font-bold">Solicitação Confirmada</h1>
+                    <p className="text-slate-600 mb-8">
+                        Seus dados foram encaminhados com segurança.
+                        <br />Verifiquei seu envio e retornarei no contato informado.
                     </p>
                     <button onClick={() => window.location.reload()} className="text-blue-900 font-bold hover:bg-blue-50 px-6 py-2 rounded transition-colors">
-                        Voltar ao Portal
+                        Voltar
                     </button>
                 </div>
             </main>
@@ -158,43 +158,83 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* --- FORMULÁRIO DE CONTATO SEGURO (HONEYPOT INTEGRADO) --- */}
+            {/* --- FORMULÁRIO DE CONTATO CORRIGIDO --- */}
             <section id="contato" className="py-16 px-6 bg-slate-100">
                 <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-xl border-t-4 border-blue-900">
                     <h3 className="text-2xl font-serif text-blue-900 mb-2 text-center">Solicitar Análise Pericial</h3>
-                    <p className="text-center text-slate-500 mb-8 text-sm">Canal criptografado para Advogados e Magistrados.</p>
+                    <p className="text-center text-slate-500 mb-8 text-sm">Canal direto para Advogados e Magistrados.</p>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
 
-                        {/* 1. HONEYPOT: O Segredo da Segurança Anti-Spam */}
-                        <input type="text" name="_gotcha" className="hidden" tabIndex="-1" autoComplete="off" />
-                        <input type="hidden" name="_subject" value="Novo Lead: Site Perito Judicial" />
+                        {/* --- CORREÇÃO DE SEGURANÇA (HONEYPOT INVISÍVEL) --- */}
+                        {/* O uso de className="hidden" resolve o problema visual no Tailwind */}
+                        <input
+                            type="text"
+                            name="_gotcha"
+                            className="hidden"
+                            tabIndex="-1"
+                            autoComplete="off"
+                        />
+
+                        {/* Assunto que chegará no seu email */}
+                        <input type="hidden" name="_subject" value="Novo Lead: Site Perito Forense" />
 
                         <div>
                             <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-1">Nome Completo / OAB</label>
-                            <input id="name" type="text" name="name" required className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none" placeholder="Ex: Dr. João Silva" />
+                            <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                required
+                                className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none text-slate-900"
+                                placeholder="Dr. João Silva"
+                            />
                             <ValidationError prefix="Nome" field="name" errors={state.errors} />
                         </div>
 
                         <div>
                             <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-1">E-mail Corporativo</label>
-                            <input id="email" type="email" name="email" required className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none" placeholder="contato@advocacia.com.br" />
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                required
+                                className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none text-slate-900"
+                                placeholder="contato@advocacia.com.br"
+                            />
                             <ValidationError prefix="Email" field="email" errors={state.errors} />
                         </div>
 
                         <div>
                             <label htmlFor="phone" className="block text-sm font-bold text-slate-700 mb-1">WhatsApp (Opcional)</label>
-                            <input id="phone" type="tel" name="phone" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none" placeholder="(00) 00000-0000" />
+                            <input
+                                id="phone"
+                                type="tel"
+                                name="phone"
+                                className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none text-slate-900"
+                                placeholder="(00) 00000-0000"
+                            />
                         </div>
 
                         <div>
                             <label htmlFor="message" className="block text-sm font-bold text-slate-700 mb-1">Resumo do Caso</label>
-                            <textarea id="message" name="message" rows="4" required className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none" placeholder="Breve descrição da necessidade técnica..."></textarea>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="4"
+                                required
+                                className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none text-slate-900"
+                                placeholder="Breve descrição da necessidade técnica..."
+                            />
                             <ValidationError prefix="Mensagem" field="message" errors={state.errors} />
                         </div>
 
-                        <button type="submit" disabled={state.submitting} className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 rounded shadow-lg transition-all disabled:opacity-50 flex justify-center items-center gap-2">
-                            {state.submitting ? 'Enviando Seguro...' : 'Enviar Solicitação Confidencial 🔒'}
+                        <button
+                            type="submit"
+                            disabled={state.submitting}
+                            className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 rounded shadow-lg transition-all disabled:opacity-50 flex justify-center items-center gap-2"
+                        >
+                            {state.submitting ? 'Processando envio...' : 'Enviar Solicitação Segura 🔒'}
                         </button>
                     </form>
                 </div>
