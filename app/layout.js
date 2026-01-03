@@ -1,9 +1,16 @@
-import { Inter } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-sans",
+    display: 'swap',
+});
+
+const merriweather = Merriweather({
+    subsets: ["latin"],
+    weight: ['300', '400', '700', '900'],
+    variable: "--font-serif",
     display: 'swap',
 });
 
@@ -21,7 +28,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="pt-BR" className={`${inter.variable} antialiased`}>
+        <html lang="pt-BR" className={`${inter.variable} ${merriweather.variable} antialiased`}>
             <body className="font-sans text-slate-900 bg-white selection:bg-slate-900 selection:text-white">
                 {children}
             </body>
