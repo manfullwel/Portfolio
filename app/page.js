@@ -167,10 +167,7 @@ export default function Home() {
                     <form onSubmit={handleSubmit} className="space-y-5">
 
                         {/* 1. HONEYPOT: O Segredo da Segurança Anti-Spam */}
-                        {/* Este campo é invisível. Se um bot preencher, o Formspree bloqueia. */}
-                        <input type="text" name="_gotcha" style={{ display: 'none' }} />
-
-                        {/* 2. Assunto Personalizado para seu E-mail */}
+                        <input type="text" name="_gotcha" className="hidden" tabIndex="-1" autoComplete="off" />
                         <input type="hidden" name="_subject" value="Novo Lead: Site Perito Judicial" />
 
                         <div>
