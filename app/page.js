@@ -5,19 +5,7 @@ import { useForm, ValidationError } from '@formspree/react';
 import Link from "next/link";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaLock, FaShieldAlt, FaBalanceScale, FaMicrochip } from 'react-icons/fa';
 
-// --- SEO DE ELITE (Metadados Atualizados) ---
-export const metadata = {
-    title: 'Igor Penha | Perito Judicial em Computação Forense & IA',
-    description: 'Perito Judicial especializado em Fraudes Bancárias, Detecção de Deepfakes e Hardware Mobile (Chip-off). Laudos técnicos com validade jurídica e conformidade ISO 27037.',
-    openGraph: {
-        title: 'Igor Penha - Perito Judicial Forense',
-        description: 'Auditoria de Deepfakes, Fraudes Financeiras e Recuperação de Hardware.',
-        url: 'https://ispforense.com.br',
-        siteName: 'Igor Penha Forense',
-        locale: 'pt_BR',
-        type: 'website',
-    },
-};
+
 
 export default function Home() {
     // CONFIGURAÇÃO DO FORMSPREE
