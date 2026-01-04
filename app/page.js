@@ -226,7 +226,7 @@ export default function Home() {
                     </Link>
 
                     {/* Project 3: Algorithmic Audit (New) */}
-                    <div className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer bg-white shadow-sm">
+                    <Link href="/blog/auditoria-algoritmica-fraudes" className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer bg-white shadow-sm">
                         <div className="md:w-32 flex flex-col justify-center">
                             <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">BIG DATA</div>
                             <div className="text-[10px] font-bold text-purple-600 bg-purple-100 px-2 py-1 rounded inline-block w-max">Pós-Graduação IA</div>
@@ -237,7 +237,7 @@ export default function Home() {
                                 Análise preditiva de padrões anômalos em dados financeiros (Whinx Legacy). Identificação de engenharia social em boletos e fluxos suspeitos via Random Forest.
                             </p>
                         </div>
-                    </div>
+                    </Link>
 
                     <div className="mt-6 text-center md:text-right">
                         <Link href="/blog" className="text-blue-900 font-bold hover:underline text-sm inline-flex items-center gap-2">
