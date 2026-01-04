@@ -197,23 +197,51 @@ export default function Home() {
             <section className="py-16 px-6 max-w-7xl mx-auto">
                 <h3 className="text-3xl font-serif text-blue-900 mb-6">Laboratório Blue Team</h3>
                 <div className="space-y-4">
-                    <Link href="/blog/chip-off-forensics" className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer">
-                        <div className="md:w-32 text-xs font-mono text-slate-400 mt-1">BLUE TEAM</div>
+                    {/* Project 1: Chip-Off Forensics */}
+                    <Link href="/blog/chip-off-forensics" className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer bg-white shadow-sm">
+                        <div className="md:w-32 flex flex-col justify-center">
+                            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">HARDWARE</div>
+                            <div className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded inline-block w-max">2010 - 2025</div>
+                        </div>
                         <div>
-                            <h5 className="font-bold text-slate-800">Chip-Off Forensics (Hardware)</h5>
-                            <p className="text-sm text-slate-600 mt-1">Extração física de dados em dispositivos destruídos onde o software falha.</p>
+                            <h5 className="font-bold text-slate-800 group-hover:text-blue-900 transition-colors">Chip-Off Forensics & Recovery</h5>
+                            <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                                Extração física de dados em dispositivos destruídos onde o software falha. Preservação de cadeia de custódia (ISO 27037) e expertise em legados (Nokia/Sony) a modernos.
+                            </p>
                         </div>
                     </Link>
-                    <Link href="/blog/deepfakes-audio-legal" className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer">
-                        <div className="md:w-32 text-xs font-mono text-slate-400 mt-1">IA AUDIT</div>
+
+                    {/* Project 2: Deepfakes Audio */}
+                    <Link href="/blog/deepfakes-audio-legal" className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer bg-white shadow-sm">
+                        <div className="md:w-32 flex flex-col justify-center">
+                            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">IA AUDIT</div>
+                            <div className="text-[10px] font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded inline-block w-max">2023 - Presente</div>
+                        </div>
                         <div>
-                            <h5 className="font-bold text-slate-800">Deepfakes de Áudio</h5>
-                            <p className="text-sm text-slate-600 mt-1">Detecção de manipulações geradas por IA em provas sonoras.</p>
+                            <h5 className="font-bold text-slate-800 group-hover:text-blue-900 transition-colors">Deepfakes de Áudio (Machine Learning)</h5>
+                            <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                                Detecção de manipulações em provas sonoras utilizando modelos espectrais e IA. Foco em anomalias de formantes e ruídos artificiais em processos trabalhistas.
+                            </p>
                         </div>
                     </Link>
-                    <div className="mt-4 text-center md:text-right">
-                        <Link href="/blog" className="text-blue-900 font-bold hover:underline text-sm">
-                            Ver Todos os Artigos →
+
+                    {/* Project 3: Algorithmic Audit (New) */}
+                    <div className="group flex flex-col md:flex-row gap-4 p-4 border border-slate-200 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer bg-white shadow-sm">
+                        <div className="md:w-32 flex flex-col justify-center">
+                            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">BIG DATA</div>
+                            <div className="text-[10px] font-bold text-purple-600 bg-purple-100 px-2 py-1 rounded inline-block w-max">Pós-Graduação IA</div>
+                        </div>
+                        <div>
+                            <h5 className="font-bold text-slate-800 group-hover:text-blue-900 transition-colors">Auditoria Algorítmica & Fraudes</h5>
+                            <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                                Análise preditiva de padrões anômalos em dados financeiros (Whinx Legacy). Identificação de engenharia social em boletos e fluxos suspeitos via Random Forest.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 text-center md:text-right">
+                        <Link href="/blog" className="text-blue-900 font-bold hover:underline text-sm inline-flex items-center gap-2">
+                            Ver Biblioteca Técnica <span className="text-lg">→</span>
                         </Link>
                     </div>
                 </div>
