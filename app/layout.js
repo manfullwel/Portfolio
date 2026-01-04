@@ -15,14 +15,14 @@ const merriweather = Merriweather({
 });
 
 export const metadata = {
-    title: 'Igor Penha | Perito Judicial em Computação Forense & IA',
+    title: 'Igor Soares | Perito Judicial em Computação Forense & IA',
     description: 'Perito Judicial especializado em Fraudes Bancárias, Detecção de Deepfakes e Hardware Mobile (Chip-off). Laudos técnicos com validade jurídica e conformidade ISO 27037 e LGPD.',
     metadataBase: new URL('https://ispforense.com.br'),
     openGraph: {
-        title: 'Igor Penha - Perito Judicial Forense',
+        title: 'Igor Soares - Perito Judicial Forense',
         description: 'Auditoria de Deepfakes, Fraudes Financeiras e Recuperação de Hardware (Nokia/Sony Legacy).',
         url: 'https://ispforense.com.br',
-        siteName: 'Igor Penha Forense',
+        siteName: 'Igor Soares Forense',
         locale: 'pt_BR',
         type: 'website',
         images: [
@@ -30,13 +30,13 @@ export const metadata = {
                 url: '/image/profile.png',
                 width: 800,
                 height: 600,
-                alt: 'Igor Penha Perito Judicial',
+                alt: 'Igor Soares Perito Judicial',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Igor Penha | Perito Judicial Forense',
+        title: 'Igor Soares | Perito Judicial Forense',
         description: 'Auditoria de Deepfakes e Fraudes Bancárias.',
         images: ['/image/profile.png'],
     },

@@ -113,7 +113,7 @@ export default function Home() {
                     <div className="w-48 h-48 mx-auto rounded-full p-1 bg-gradient-to-tr from-blue-900 to-slate-400 shadow-2xl">
                         <img
                             src="/image/profile.png"
-                            alt="Igor Penha - Perito Judicial Forense"
+                            alt="Igor Soares - Perito Judicial Forense"
                             className="w-full h-full object-cover rounded-full border-4 border-slate-50"
                         />
                     </div>
@@ -121,7 +121,7 @@ export default function Home() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-serif font-bold text-blue-900 mb-2">
-                    Igor de Jesus Soares Penha
+                    Igor Soares
                 </h1>
                 {/* BIO REESCRITA */}
                 <h2 className="text-xl md:text-2xl text-slate-600 font-medium mb-6 max-w-3xl mx-auto">

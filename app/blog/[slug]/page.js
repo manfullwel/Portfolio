@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
     const { slug } = params;
     const postData = getPostData(slug);
     return {
-        title: `${postData.title} | Igor Penha Forense`,
+        title: `${postData.title} | Igor Soares Forense`,
         description: postData.description,
         openGraph: {
             title: postData.title,
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
             url: `https://ispforense.com.br/blog/${slug}`,
             type: 'article',
             publishedTime: postData.date,
-            authors: ['Igor Penha'],
+            authors: ['Igor Soares'],
             images: [
                 {
                     url: postData.image || '/image/profile.png', // Fallback to profile
@@ -77,7 +77,7 @@ export default async function Post({ params }) {
                             <FaCalendar /> {postData.date}
                         </div>
                         <div className="flex items-center gap-2">
-                            <span>Por <strong>Igor Penha</strong></span>
+                            <span>Por <strong>Igor Soares</strong></span>
                         </div>
                     </div>
                 </header>
