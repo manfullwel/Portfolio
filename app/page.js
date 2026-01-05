@@ -136,8 +136,8 @@ export default function Home() {
                     <span className="px-4 py-1 bg-blue-100 text-blue-900 rounded-full text-sm font-semibold border border-blue-200 flex items-center gap-2">
                         <FaShieldAlt /> LGPD Compliance
                     </span>
-                    <span className="px-4 py-1 bg-slate-200 text-slate-800 rounded-full text-sm font-semibold border border-slate-300 flex items-center gap-2">
-                        <FaBalanceScale /> Perito Judicial
+                    <span className="px-4 py-1 bg-slate-900 text-white rounded-full text-sm font-semibold border border-slate-700 flex items-center gap-2 shadow-sm">
+                        <FaBalanceScale /> Perito Judicial & Assistente Técnico
                     </span>
                     <span className="px-4 py-1 bg-slate-200 text-slate-800 rounded-full text-sm font-semibold border border-slate-300 flex items-center gap-2">
                         <FaMicrochip /> Hardware Forensics (10+ Anos)
