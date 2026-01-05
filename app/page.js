@@ -128,7 +128,7 @@ export default function Home() {
                     Perito Judicial e Extrajudicial em Computação Forense | Especialista em IA e Machine Learning
                 </h2>
                 <p className="text-slate-500 mb-8 max-w-2xl mx-auto text-sm italic">
-                    "Especialista com mais de uma década de imersão técnica em arquitetura de hardware e sistemas móveis, consolidado através da metodologia do Prof. Marcos Monteiro."
+                    "Capacitação em Computação Forense fundamentada na metodologia do Prof. Marcos Monteiro, consolidando mais de uma década de expertise técnica em hardware e sistemas móveis."
                 </p>
 
                 {/* BADGES */}
