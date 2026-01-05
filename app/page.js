@@ -136,7 +136,7 @@ export default function Home() {
                     <span className="px-4 py-1 bg-blue-100 text-blue-900 rounded-full text-sm font-semibold border border-blue-200 flex items-center gap-2">
                         <FaShieldAlt /> LGPD Compliance
                     </span>
-                    <span className="px-4 py-1 bg-slate-900 text-white rounded-full text-sm font-semibold border border-slate-700 flex items-center gap-2 shadow-sm">
+                    <span className="px-4 py-1 bg-blue-900 text-white rounded-full text-sm font-semibold border border-blue-800 flex items-center gap-2 shadow-sm order-first md:order-none">
                         <FaBalanceScale /> Perito Judicial & Assistente Técnico
                     </span>
                     <span className="px-4 py-1 bg-slate-200 text-slate-800 rounded-full text-sm font-semibold border border-slate-300 flex items-center gap-2">
