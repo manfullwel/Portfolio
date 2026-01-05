@@ -69,8 +69,8 @@ export default function Home() {
         setStatus("sending");
 
         emailjs.sendForm(
-            'dqv6PBMp9vtBml7HZKcWR',   // SERVICE ID (API)
-            'template_5psha1l',        // TEMPLATE ID
+            'service_vgt1kg6',         // SERVICE ID (Corrigido: Estava a Private Key antes)
+            'template_5psha1l',        // TEMPLATE ID (Mantido o atual)
             form.current,
             'AJet-BX2qqmN8Nc-f'        // PUBLIC KEY
         )
