@@ -351,17 +351,26 @@ export default function Home() {
                             <span className="border border-slate-600 px-2 py-1 rounded text-xs">ISO 27037</span>
                             <span className="border border-slate-600 px-2 py-1 rounded text-xs">OWASP</span>
                         </div>
-                        <p className="mt-4 text-xs">© 2025 Igor Penha. "Até aqui o Senhor nos ajudou."</p>
                     </div>
                     <div className="text-right">
                         <h5 className="text-white font-serif mb-4">Contato Oficial</h5>
-                        <p>Brasília/DF - Atuação Nacional</p>
-                        <p className="text-xs mt-1 text-blue-300">peritoigor@ispforense.com.br</p>
+                        <p className="font-bold text-slate-300">Brasília/DF - Atuação Nacional</p>
+                        <p>Seg a Sex, 09h às 18h</p>
+                        <p className="text-blue-400 mt-2">peritoigor@ispforense.com.br</p>
+                    </div>
+                </div>
+
+                <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50">
+                    <p>© 2026 Igor Soares. "Até aqui o Senhor nos ajudou."</p>
+                    <div className="flex gap-4">
+                        <span className="flex items-center gap-1"><FaShieldAlt /> LGPD Compliant</span>
+                        <span className="flex items-center gap-1"><FaLock /> Serverless Security</span>
                     </div>
                 </div>
             </footer>
 
-            <a href="https://wa.me/5571999999999" className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50 transition-transform hover:scale-110">
+            {/* Floating Action Button (WhatsApp) */}
+            <a href="https://wa.me/5561996565437" className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50 transition-transform hover:scale-110">
                 <FaWhatsapp className="text-3xl" />
             </a>
         </main>

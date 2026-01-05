@@ -3,7 +3,7 @@ import { getSortedPostsData } from '../../lib/posts';
 import { FaArrowLeft } from 'react-icons/fa';
 
 export const metadata = {
-    title: 'Blog Técnico Forense | Igor Penha',
+    title: 'Blog Técnico Forense | Igor Soares',
     description: 'Artigos sobre Computação Forense, Deepfakes, Fraudes Bancárias e Hardware Hacking.',
 };
 
