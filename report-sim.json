@@ -1,0 +1,14 @@
+{
+    "timestamp": "2026-01-05T04:17:41.026Z",
+    "test_type": "Forensic Browser Simulation (Header Spoofing)",
+    "simulated_headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Origin": "http://localhost:3000",
+        "Referer": "http://localhost:3000/contact"
+    },
+    "result": {
+        "success": true,
+        "http_status": 200,
+        "api_response": "OK - Email aceito (Bypass com sucesso)"
+    }
+}

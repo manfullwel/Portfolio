@@ -62,7 +62,7 @@ export default function Home() {
         // Nota: EmailJS pega do formulário HTML direto, então atualizamos os valores nos inputs antes do disparo
         // (Isso é um 'hack' necessário sem backend intermediário)
         if (form.current) {
-            form.current.user_name.value = sanitizeInput(rawData.user_name);
+            form.current.name.value = sanitizeInput(rawData.name);
             form.current.message.value = sanitizeInput(rawData.message);
         }
 
@@ -264,13 +264,13 @@ export default function Home() {
                         {/* Nome */}
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">Nome Completo / OAB</label>
-                            <input type="text" name="user_name" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Dr. João Silva" />
+                            <input type="text" name="name" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="Dr. João Silva" />
                         </div>
 
                         {/* Email */}
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1">E-mail Corporativo</label>
-                            <input type="email" name="user_email" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="contato@advocacia.com.br" />
+                            <input type="email" name="email" required maxLength="100" className="w-full p-3 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md" placeholder="contato@advocacia.com.br" />
                         </div>
 
                         {/* WhatsApp com Mask */}
@@ -280,7 +280,7 @@ export default function Home() {
                                 <span className="absolute left-3 top-3 text-slate-400 font-bold select-none">+55</span>
                                 <input
                                     type="tel"
-                                    name="user_phone"
+                                    name="phone"
                                     maxLength="15"
                                     className="w-full p-3 pl-12 border border-slate-300 rounded focus:border-blue-900 outline-none transition-shadow focus:shadow-md"
                                     placeholder="(00) 00000-0000"

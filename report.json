@@ -1,0 +1,30 @@
+{
+    "timestamp": "2026-01-05T04:02:48.597Z",
+    "environment": "Node.js Terminal",
+    "test_type": "Complex Debugging & Latency Analysis",
+    "config_check": {
+        "service_id_valid": true,
+        "template_id_valid": true,
+        "public_key_present": true,
+        "private_key_present": true
+    },
+    "metrics": {
+        "start_time": 58.742,
+        "end_time": 968.4464,
+        "latency_ms": "909.70"
+    },
+    "result": {
+        "success": false,
+        "http_status": 403,
+        "api_response": "API calls are disabled for non-browser applications"
+    },
+    "diagnostics": {
+        "points_of_failure": [
+            {
+                "stage": "API_RESPONSE",
+                "error": "API calls are disabled for non-browser applications",
+                "possible_cause": "Erro de servidor ou autenticação"
+            }
+        ]
+    }
+}
